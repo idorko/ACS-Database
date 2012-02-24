@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  num_clients: 1
+  num_guides: 1
+  experience: MyString
+  type: 
+  date: 2012-02-23
+  time: 2012-02-23 17:48:52
+  contact: MyString
+
+two:
+  num_clients: 1
+  num_guides: 1
+  experience: MyString
+  type: 
+  date: 2012-02-23
+  time: 2012-02-23 17:48:52
+  contact: MyString
