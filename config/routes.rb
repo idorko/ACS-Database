@@ -1,8 +1,10 @@
 AcsDatabase::Application.routes.draw do
-  
+  get "courses/new"
 
+ 	root :to => 'pages#home' 
 	resources :clients, :guides, :courses, :cliffs	
 	
-	root :to => 'pages#home' 
-	get "pages/home"	
+	match '/clients', :to => 'clients#index'
+	
+
 end

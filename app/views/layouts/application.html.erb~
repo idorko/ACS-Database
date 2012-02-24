@@ -11,22 +11,44 @@
     <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
 </head>
-  <body>
+ 
     <div class="container">
-      <header>
+
+      <div id="header" class="span-24">
+				HEADER
         <%= image_tag("logo.png", :alt => "ACS", :class => "round") %>
-        <nav class="round">
+			</div>
+		
+			<div id="sidebar" class="span-4">
+		    <nav class="round">
           <ul>
-            <li><%= link_to "Home", '#' %></li>
-            <li><%= link_to "Help", '#' %></li>
-            <li><%= link_to "Sign in", '#' %></li>
+						<li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Clients", clients_path %></li>
+            <li><%= link_to "Guides", guides_path %></li>
+						<li><%= link_to "Courses", courses_path %></li>
+						<li><%= link_to "Cliffs", cliffs_path %></li>
           </ul>
         </nav>
-      </header>
-      <section class="round">
-        <%= yield %>
-      </section>
-    </div>
-  </body>
+      </div>
+	
+		<div id="content" class ="span-16">
+		CENTER COLUMN
+    	  <section class="round">
+     	  <% flash.each do |key, value| %>
+         	 <div class="flash" <%= key %>><%= value %></div>
+       	 <% end %>
+       	 <%= yield %>
+     	 	</section>
+		</div>
+
+		<div id="rsidebar" class="span-4 last">
+			LAST COLUMN
+		</div>
+
+		<div id="footer" class="span-24">
+			FOOTER
+		</div>
+
+   </div>
 </html>
 

@@ -1,5 +1,11 @@
 class ClientsController < ApplicationController
 	
+
+	def index
+		@title = "All Clients"
+		@clients = Client.all
+	end
+
 	def show
 		@client = Client.find(params[:id])
 	end
@@ -23,4 +29,5 @@ class ClientsController < ApplicationController
 	def edit
 		@client = Client.find(params[:id])
 		@title = "Edit Client"
+	end
 end

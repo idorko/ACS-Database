@@ -1,4 +1,10 @@
 class GuidesController < ApplicationController
+	
+	def index
+		@title = "All Guides"
+		@guides = Guide.all
+	end
+
 	def show
 		@guide = Guide.find(params[:id])
 	end
