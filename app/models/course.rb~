@@ -11,5 +11,4 @@ class Course < ActiveRecord::Base
 	validates :type, :presence => true
 	validates :date, :presence => true
 	validates :time, :presence => true
-
 end
