@@ -1,0 +1,28 @@
+<h1> Add New Guide </h1>
+
+<%= form_for(@guide) do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>	
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :email %><br />
+		<%= f.text_field :email %>
+	</div>
+	<div class="field">
+		<%= f.label :age %><br />
+		<%= f.number_field :age %>
+	</div>
+	<div class="field">
+		<%= f.label "Phone #" %><br />
+		<%= f.text_field :phonenum %>
+	</div>
+	<div class="field">
+		<%= f.label :certifications %><br />
+		<%= f.text_field :certifications %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Add Guide" %>
+	</div>
+<% end %> 
