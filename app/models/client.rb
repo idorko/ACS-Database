@@ -1,6 +1,7 @@
 class Client < ActiveRecord::Base
 	
 	attr_accessible :name, :age, :email, :phone, :town, :state, :referal, :experience
+	has_and_belongs_to_many :courses, :join_table => 'clients_courses'
 	has_many :guides, :through => :courses
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
