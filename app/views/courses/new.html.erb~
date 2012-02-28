@@ -3,7 +3,7 @@
 <%= form_for(@course) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>	
 	<div class="field">
-		<%= f.collection_select(:num_clients, @clients, :id , :name, {:prompt => "Select a Guide"} ) %>
+		<%= f.collection_select(:num_clients, @clients, :id , :name, {:prompt => "Select a Client"} ) %>
 	</div>	
 	<div class="field">
 		<%= f.collection_select(:num_guides, @guides, :id , :name, {:prompt => "Select a Guide"} ) %>

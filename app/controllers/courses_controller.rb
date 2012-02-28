@@ -29,15 +29,19 @@ class CoursesController < ApplicationController
 		params[:course][:guide_ids] ||= []
 		params[:course][:client_ids] ||= []
 		@course = Course.find(params[:id])
-		@guide = Guide.find(@course.num_guides)
-		@client = Client.find(@course.num_clients)	
-		@guide.courses << @course
-		@client.courses << @course
+
+		if (!params[:course][:num_guides].nil?)
+			@guide = Guide.find(params[:course][:num_guides])
+		end
+		@client = Client.find(params[:course][:num_clients])	
+
 		if @course.update_attributes(params[:course])
-			flash[:notice]='Course Updated.'
+			flash[:notice]="Course Updated. #{@course.num_guides}"
+			@guide.courses << @course
+			@client.courses << @course
 			redirect_to @course
 		else
-			flash[:error]='Error Updating Course.'
+			flash[:error]="Error Updating Course. #{@course.num_guides}"
 			redirect_to @course
 		end
 	end
