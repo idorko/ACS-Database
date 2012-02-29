@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
 		@course = Course.find(params[:id])
 		@title = "Edit Course"
 		@guides = Guide.all
-		@clients = Client.all
+		@clients = Client.search(params[:search])
 	end
 
 	def update
@@ -58,8 +58,8 @@ class CoursesController < ApplicationController
 		if (!params[:course][:num_guides].blank?)
 			@guide = Guide.find(params[:course][:num_guides])
 		end
-		if (!params[:course][:num_clients].blank?)
-			@client = Client.find(params[:course][:num_clients])	
+		if (!params[:search].blank?)
+			@client = Client.search(params[:search])	
 		end
 		
 		if @course.save

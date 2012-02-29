@@ -44,7 +44,7 @@
 <tr>
 
 	<td>
-			<div class ="field">			
+			<div id="client_list" class ="field">			
 				<b>Add Client:</b><br/>
 				<%= f.collection_select(:num_clients, @clients, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
 			</div>
@@ -63,10 +63,13 @@
 		<%= f.submit "Change Course" %>
 	</div>
 <% end %>
-
-<% form_tag client_search, :method => 'get' do %>
-	<div class ="field">
-		<%= text_field_tag :search, params[:search] %>
+<%= form_tag edit_course_path("#{@course.id}"), :method => 'get' do %>
+	<p>
+		<b>Find Client:</b>
+		<%= text_field_tag :search, params[:search] %> <br/>
 		<%= submit_tag "Find Client", :name => nil %>
-	</div>
-<% end %>  
+	</p>
+<% end %>
+
+
+

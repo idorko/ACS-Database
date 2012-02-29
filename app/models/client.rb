@@ -14,4 +14,13 @@ class Client < ActiveRecord::Base
 										:format => {:with => email_regex},
 										:uniqueness => {:case_sensitive => false}
 	validates :phone, :presence => true
+
+	def self.search(search)
+		if search
+			find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+		else
+			find(:all)
+		end
+	end
+
 end

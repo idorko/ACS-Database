@@ -6,6 +6,7 @@ class Course < ActiveRecord::Base
 	has_and_belongs_to_many :guides, :join_table => 'courses_guides'
 	belongs_to :cliff
 
+	accepts_nested_attributes_for :clients
 
 	validates :course_type, :presence => true
 	validates :date, :presence => true
