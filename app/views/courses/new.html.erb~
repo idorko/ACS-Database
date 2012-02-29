@@ -1,13 +1,7 @@
 <h1> New Course </h1>
 
-<%= form_for(@course) do |f| %>
-	<%= render 'shared/error_messages', :object => f.object %>	
-	<div class="field">
-		<%= f.collection_select(:num_clients, @clients, :id , :name, {:prompt => "Select a Client"} ) %>
-	</div>	
-	<div class="field">
-		<%= f.collection_select(:num_guides, @guides, :id , :name, {:prompt => "Select a Guide"} ) %>
-	</div>	
+<%= form_for(@course, :action => 'update') do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>	
 	<div class="field">
 		<%= f.label :experience %><br />
 		<%= f.number_field :experience %>
@@ -28,6 +22,43 @@
 		<%= f.label :contact %><br />
 		<%= f.text_field :contact %>
 	</div>
+<table>
+<tr> 
+	<td>	
+		<b>Clients</b>
+		<ul class="checkbox-list">
+		<% @course.clients.each do |client| %>
+			<li><%= check_box_tag "course[client_ids][]", client.id, @course.clients.include?(client) %> <%= client.name %></li>
+		<% end %>
+	</ul>
+	</td>
+	<td>
+		<b>Guides:</b>
+			<ul class="checkbox-list">
+			<% @course.guides.each do |guide| %>
+				<li><%= check_box_tag "course[guide_ids][]", guide.id, @course.guides.include?(guide) %> <%= guide.name %></li>
+			<% end %>
+		</ul>
+	</td>
+</tr>
+<tr>
+
+	<td>
+			<div class ="field">			
+				<b>Add Client:</b><br/>
+				<%= f.collection_select(:num_clients, @clients, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
+			</div>
+	</td>	
+	
+	<td>
+			<div class="field">
+					<b>Add Guide:</b><br/>
+					<%= f.collection_select(:num_guides, @guides, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
+				</div>
+
+	</td>
+</tr>
+</table>
 	<div class="actions">
 		<%= f.submit "Create Course" %>
 	</div>

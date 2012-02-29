@@ -1,26 +1,23 @@
-<h1> New Course </h1>
-
-<%= form_for(@course, :action => 'update') do |f| %>
-<%= render 'shared/error_messages', :object => f.object %>	
+<%= render 'shared/error_messages', :object => object %>	
 	<div class="field">
 		<%= f.label :experience %><br />
 		<%= f.number_field :experience %>
 	</div>
 	<div class="field">
-		<%= f.label 'Course Type' %><br />
-		<%= f.text_field :course_type %>
+		<%= object.label 'Course Type' %><br />
+		<%= object.text_field :course_type %>
 	</div>
 	<div class="field">
-		<%= f.label :date %><br />
-		<%= f.date_select :date %>
+		<%= object.label :date %><br />
+		<%= object.date_select :date %>
 	</div>
 	<div class="field">
-		<%= f.label :time %><br />
-		<%= f.time_select :time %>
+		<%= object.label :time %><br />
+		<%= object.time_select :time %>
 	</div>
 	<div class="field">
-		<%= f.label :contact %><br />
-		<%= f.text_field :contact %>
+		<%= object.label :contact %><br />
+		<%= object.text_field :contact %>
 	</div>
 <table>
 <tr> 
@@ -46,20 +43,16 @@
 	<td>
 			<div class ="field">			
 				<b>Add Client:</b><br/>
-				<%= f.collection_select(:num_clients, @clients, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
+				<%= object.collection_select(:num_clients, @clients, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
 			</div>
 	</td>	
 	
 	<td>
 			<div class="field">
 					<b>Add Guide:</b><br/>
-					<%= f.collection_select(:num_guides, @guides, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
+					<%= object.collection_select(:num_guides, @guides, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
 				</div>
 
 	</td>
 </tr>
 </table>
-	<div class="actions">
-		<%= f.submit "Create Course" %>
-	</div>
-<% end %> 

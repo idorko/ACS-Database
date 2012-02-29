@@ -1,9 +1,7 @@
 <h1> Edit Course </h1>
 
 <%= form_for(@course, :action => 'update') do |f| %>
-	<%= render 'shared/error_messages', :object => f.object %>	
-	<div class="field">
-	</div>	
+<%= render 'shared/error_messages', :object => f.object %>	
 	<div class="field">
 		<%= f.label :experience %><br />
 		<%= f.number_field :experience %>
@@ -47,13 +45,15 @@
 
 	<td>
 			<div class ="field">			
-				<%= f.collection_select(:num_clients, @clients, :id , :name, {:prompt => "Select Client"} ) %>
+				<b>Add Client:</b><br/>
+				<%= f.collection_select(:num_clients, @clients, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
 			</div>
 	</td>	
 	
 	<td>
 			<div class="field">
-					<%= f.collection_select(:num_guides, @guides, :id , :name, {:include_blank => 'none', :selected => 'nil'} ) %>
+					<b>Add Guide:</b><br/>
+					<%= f.collection_select(:num_guides, @guides, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
 				</div>
 
 	</td>

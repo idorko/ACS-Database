@@ -6,8 +6,7 @@ class Course < ActiveRecord::Base
 	has_and_belongs_to_many :guides, :join_table => 'courses_guides'
 	belongs_to :cliff
 
-	validates :num_clients, :presence => true
-	validates :num_guides, :presence => true
+
 	validates :course_type, :presence => true
 	validates :date, :presence => true
 	validates :time, :presence => true

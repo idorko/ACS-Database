@@ -30,18 +30,24 @@ class CoursesController < ApplicationController
 		params[:course][:client_ids] ||= []
 		@course = Course.find(params[:id])
 
-		if (!params[:course][:num_guides].nil?)
+		if (!params[:course][:num_guides].blank?)
 			@guide = Guide.find(params[:course][:num_guides])
 		end
-		@client = Client.find(params[:course][:num_clients])	
+		if (!params[:course][:num_clients].blank?)
+			@client = Client.find(params[:course][:num_clients])	
+		end
 
 		if @course.update_attributes(params[:course])
-			flash[:notice]="Course Updated. #{@course.num_guides}"
-			@guide.courses << @course
-			@client.courses << @course
+			flash[:notice]="Course Updated."
+			if @guide
+				@guide.courses << @course
+			end
+			if @client	
+				@client.courses << @course
+			end
 			redirect_to @course
 		else
-			flash[:error]="Error Updating Course. #{@course.num_guides}"
+			flash[:error]="Error Updating Course."
 			redirect_to @course
 		end
 	end
@@ -49,13 +55,21 @@ class CoursesController < ApplicationController
 	def create
 
 		@course = Course.new(params[:course])
-		@guide = Guide.find(@course.num_guides)
-		@client = Client.find(@course.num_clients)		
-		@guide.courses << @course
-		@client.courses << @course
+		if (!params[:course][:num_guides].blank?)
+			@guide = Guide.find(params[:course][:num_guides])
+		end
+		if (!params[:course][:num_clients].blank?)
+			@client = Client.find(params[:course][:num_clients])	
+		end
 		
 		if @course.save
 			flash[:success] = "Course Created!"
+			if @guide
+				@guide.courses << @course
+			end
+			if @client	
+				@client.courses << @course
+			end
 			redirect_to @course
 		else
 			@title = "New Course"
