@@ -1,5 +1,17 @@
-<ul class="checkbox-list">
+<%= form_tag ({:controller => :courses, :action => :create}) do %>
+	<h5> Clients: </h5>	
+	
+	<ul class="checkbox-list">
 		<% @clients.each do |client| %>
-			<li><%= check_box_tag "course[client_ids][]", client.id, @course.clients.include?(client) %> <%= client.first_name+client.last_name %></li>
+			<li><%= check_box_tag "client_ids[]", client.id %> 
+			<%= client.first_name+" "+client.last_name %></li>
 		<% end %>
-</ul>
+	</ul>
+	
+	<h5> Other Info: </h5>
+	Experience: <%= text_field_tag "experience" %><br />
+	Course Type: <%= text_field_tag "course_type" %><br />
+	Course Date: <%= 
+	<%= submit_tag "Create Course", :name => nil %>
+<% end %>
+

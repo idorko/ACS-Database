@@ -1,0 +1,7 @@
+
+	<ul class="checkbox-list">
+		<% @clients.each do |client| %>
+			<%= client.first_name+" "+client.last_name %></li>
+		<% end %>
+	</ul>
+

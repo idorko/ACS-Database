@@ -56,12 +56,6 @@ class CoursesController < ApplicationController
 	def create
 
 		@course = Course.new(params[:course])
-		if (!params[:course][:num_guides].blank?)
-			@guide = Guide.find(params[:course][:num_guides])
-		end
-		if (!params[:search].blank?)
-			@client = Client.search(params[:search])			
-		end
 		
 		if @course.save
 			flash[:success] = "Course Created!"
@@ -78,4 +72,9 @@ class CoursesController < ApplicationController
 		end
 	end	
 	
+	def clients_selected
+		clients = Client.find(params[:client_ids])	
+		@clients = clients	
+		
+	end
 end

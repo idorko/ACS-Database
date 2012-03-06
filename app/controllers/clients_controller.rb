@@ -32,6 +32,7 @@ class ClientsController < ApplicationController
 
 	def search
 		@clients = Client.search(params[:search])
+		#@clients = Client.all	
 	end
 
 end

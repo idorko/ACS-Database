@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
 		@title = "New Course"
 		@guides = Guide.all
 		@clients = Client.all
-		render :partial => 'clients/search', :layout => "application"
+
 	end
 	
 	def edit
@@ -78,4 +78,9 @@ class CoursesController < ApplicationController
 		end
 	end	
 	
+	def clients_selected
+		clients = Client.find(params[:client_ids])	
+		@clients = clients	
+		
+	end
 end
