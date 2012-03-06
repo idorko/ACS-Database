@@ -54,27 +54,26 @@ class CoursesController < ApplicationController
 	end
 
 	def create
-
+		@title = "Create Course"
 		@course = Course.new(params[:course])
-		
+		if !params[:client_ids].blank?
+			@clients = Client.find(params[:client_ids])
+		end
 		if @course.save
 			flash[:success] = "Course Created!"
-			if @guide
-				@guide.courses << @course
-			end
-			if @client	
-				@client.courses << @course
+			if @clients
+				@clients.each do |client|	
+					client.courses << @course
+				end
 			end
 			redirect_to @course
 		else
-			@title = "New Course"
-			render "new"
+			flash[:error] = "Course creation failed."
+			render 'clients/search'
 		end
 	end	
 	
 	def clients_selected
-		clients = Client.find(params[:client_ids])	
-		@clients = clients	
-		
+		@clients = Client.find(params[:client_ids])	
 	end
 end

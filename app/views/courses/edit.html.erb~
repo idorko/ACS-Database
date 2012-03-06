@@ -18,17 +18,13 @@
 		<%= f.label :time %><br />
 		<%= f.time_select :time %>
 	</div>
-	<div class="field">
-		<%= f.label :contact %><br />
-		<%= f.text_field :contact %>
-	</div>
 <table>
 <tr> 
 	<td>	
 		<b>Clients</b>
 		<ul class="checkbox-list">
 		<% @course.clients.each do |client| %>
-			<li><%= check_box_tag "course[client_ids][]", client.id, @course.clients.include?(client) %> <%= client.first_name+client.last_name %></li>
+			<li><%= check_box_tag "course[client_ids][]", client.id, @course.clients.include?(client) %> <%= client.first_name+" "+client.last_name %></li>
 		<% end %>
 	</ul>
 	</td>
@@ -36,7 +32,7 @@
 		<b>Guides:</b>
 			<ul class="checkbox-list">
 			<% @course.guides.each do |guide| %>
-				<li><%= check_box_tag "course[guide_ids][]", guide.id, @course.guides.include?(guide) %> <%= guide.first_name+guide.last_name %></li>
+				<li><%= check_box_tag "course[guide_ids][]", guide.id, @course.guides.include?(guide) %> <%= guide.first_name+" "+guide.last_name %></li>
 			<% end %>
 		</ul>
 	</td>
@@ -53,16 +49,12 @@
 	<td>
 			<div class="field">
 					<b>Add Guide:</b><br/>
-					<%= f.collection_select(:num_guides, @guides, :id , :name, {:include_blank => 'none', :selected => 'none'} ) %>
+					<%= f.collection_select(:num_guides, @guides, :id , :first_name, {:include_blank => 'none', :selected => 'none'} ) %>
 				</div>
 
 	</td>
 </tr>
 </table>
-	<div class="actions">
-		<%= f.submit "Change Course" %>
-	</div>
-<% end %>
 <%= form_tag edit_course_path("#{@course.id}"), :method => 'get' do %>
 	<p>
 		<b>Find Client:</b>
@@ -70,6 +62,11 @@
 		<%= submit_tag "Find Client", :name => nil %>
 	</p>
 <% end %>
+	<div class="actions">
+		<%= f.submit "Change Course" %>
+	</div>
+<% end %>
+
 
 
 

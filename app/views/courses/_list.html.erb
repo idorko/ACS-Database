@@ -1,0 +1,7 @@
+<ul class="courses">
+	<% @courses.each do |course| %>
+		<li>
+			<%= link_to course.date, course %>
+		</li>
+	<% end %>
+</ul>

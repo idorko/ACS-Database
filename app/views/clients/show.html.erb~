@@ -1,1 +1,24 @@
-<%= @client.name %>, <%= @client.email %>
+<h1> Client Viewer </h1>
+<h3> Client: <%= @client.first_name+" "+@client.last_name %> </h3> 
+<b> Email: </b> <%= @client.email %><br />
+<b> Age: </b> <%= @client.age %><br />
+<b> Phone: </b> <%= @client.phone %><br />
+<b> Town: </b> <%= @client.town %><br />
+<b> State: </b> <%= @client.state %><br />
+<b> Referal: </b> <%= @client.referal %><br />
+<b> Experience: </b> <%= @client.experience %><br />
+<br />
+<%= form_tag ({:controller => :clients, :action => :search}) do %>
+		<%= hidden_field_tag :id, @client.id %>
+		<%= submit_tag "Create New Course for #{@client.first_name}", :name => nil %>
+	<% end %>
+<table>
+<tr>
+	<td>
+		<h3><%= "Courses:" %></h3>
+		<%= render :partial => 'courses/list' %>
+	</td>
+	<td>
+		<h3> <%= "Guides:" %></h3>
+		<%= render :partial => 'guides/list' %>
+

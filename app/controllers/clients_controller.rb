@@ -2,11 +2,19 @@ class ClientsController < ApplicationController
 	
 	def index
 		@title = "All Clients"
-		@clients = Client.all
+		@clients = Client.search(params[:search])
+
 	end
 
 	def show
+		@guides = []
 		@client = Client.find(params[:id])
+		@courses = @client.courses.all
+	 	@courses.each do |course|
+			course.guides.each do |guide|
+				@guides << guide
+			end
+		end
 	end
 	
 	def new
@@ -31,7 +39,19 @@ class ClientsController < ApplicationController
 	end
 
 	def search
-		@clients = Client.search(params[:search])
+		@title = "Create Course"
+		@course = Course.new()
+		@clients = []
+		if !params[:id].blank?
+			@clients << Client.find(params[:id])
+		end
+		if !params[:search].blank?
+			@clients = Client.search(params[:search])
+		end
+		if @clients.empty?
+			flash[:error] = "Error: no matching clients found."
+			render 'courses/new'
+		end
 		#@clients = Client.all	
 	end
 

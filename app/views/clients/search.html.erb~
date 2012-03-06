@@ -1,17 +1,21 @@
 <%= form_tag ({:controller => :courses, :action => :create}) do %>
+	<%= #render 'shared/error_messages', :object => @course %>
 	<h5> Clients: </h5>	
-	
+
 	<ul class="checkbox-list">
+	<% if @clients %>			
 		<% @clients.each do |client| %>
-			<li><%= check_box_tag "client_ids[]", client.id %> 
-			<%= client.first_name+" "+client.last_name %></li>
-		<% end %>
+				<li><%= check_box_tag "client_ids[]", client.id %> 
+				<%= client.first_name+" "+client.last_name %></li>
+			<% end %>
+	<% end %>	
 	</ul>
 	
 	<h5> Other Info: </h5>
-	Experience: <%= text_field_tag "experience" %><br />
-	Course Type: <%= text_field_tag "course_type" %><br />
-	Course Date: <%= 
+	<b>Client Experience:</b> <%= text_field_tag "course[experience]" %><br />
+	<b>Course Type:</b> <%= text_field_tag "course[course_type]" %><br />
+	<b>Course Date:</b> <%= date_select "course", "date" %><br />
+	<b>Course Time:</b> <%= time_select "course", "time" %><br />
 	<%= submit_tag "Create Course", :name => nil %>
 <% end %>
 

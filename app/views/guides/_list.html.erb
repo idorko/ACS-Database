@@ -1,0 +1,7 @@
+<ul class="guides">
+	<% @guides.each do |guide| %>
+		<li>
+			<%= link_to guide.first_name+" "+guide.last_name, guide %>
+		</li>
+	<% end %>
+</ul>
