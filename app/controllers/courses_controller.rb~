@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
 		@title = "New Course"
 		@guides = Guide.all
 		@clients = Client.all
+		render :partial => 'clients/search', :layout => "application"
 	end
 	
 	def edit
@@ -59,7 +60,7 @@ class CoursesController < ApplicationController
 			@guide = Guide.find(params[:course][:num_guides])
 		end
 		if (!params[:search].blank?)
-			@client = Client.search(params[:search])	
+			@client = Client.search(params[:search])			
 		end
 		
 		if @course.save

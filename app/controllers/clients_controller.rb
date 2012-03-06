@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
 	def create
 		@client = Client.new(params[:client])
 		if @client.save
-			flash[:success] = "Client #{@client.name} Created!"
+			flash[:success] = "Client #{@client.first_name+" "+@client.last_name} Created!"
 			redirect_to @client
 		else
 			@title = "New Client"
@@ -29,4 +29,9 @@ class ClientsController < ApplicationController
 		@client = Client.find(params[:id])
 		@title = "Edit Client"
 	end
+
+	def search
+		@clients = Client.search(params[:search])
+	end
+
 end

@@ -1,7 +1,7 @@
 <h1> Add New Client </h1>
 
-<%= form_for(@client) do |f| %>
-	<%= render 'shared/error_messages' %>	
+<%= form_for(@client, :remote => :true) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>	
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>

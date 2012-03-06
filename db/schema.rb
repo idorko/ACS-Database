@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120225003158) do
+ActiveRecord::Schema.define(:version => 20120305235155) do
 
   create_table "clients", :force => true do |t|
-    t.string   "name"
     t.integer  "age"
     t.string   "email"
     t.string   "phone"
@@ -24,6 +23,8 @@ ActiveRecord::Schema.define(:version => 20120225003158) do
     t.string   "experience"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "clients", ["email"], :name => "index_clients_on_email", :unique => true
@@ -59,7 +60,6 @@ ActiveRecord::Schema.define(:version => 20120225003158) do
   end
 
   create_table "guides", :force => true do |t|
-    t.string   "name"
     t.integer  "age"
     t.string   "email"
     t.string   "phonenum"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20120225003158) do
     t.string   "string"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "guides", ["email"], :name => "index_guides_on_email", :unique => true

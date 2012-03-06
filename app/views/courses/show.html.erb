@@ -10,7 +10,7 @@
 		<b>Clients</b>
 		<ul class="clients">
 		<% @course.clients.each do |client| %>
-			<li> <%= link_to client.name, client%></li>
+			<li> <%= link_to client.first_name+client.last_name, client%></li>
 		<% end %>
 	</ul>
 	</td>
@@ -18,7 +18,7 @@
 		<b>Guides:</b>
 			<ul class="clients">
 				<% @course.guides.each do |guide| %>
-					<li> <%= link_to guide.name, guide %></li>
+					<li> <%= link_to guide.first_name+guide.last_name, guide %></li>
 				<% end %>
 			</ul>
 	</td>

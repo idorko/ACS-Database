@@ -1,14 +1,12 @@
 class Client < ActiveRecord::Base
 	
-	attr_accessible :name, :age, :email, :phone, :town, :state, :referal, :experience
+	attr_accessible :first_name, :last_name, :age, :email, :phone, :town, :state, :referal, :experience
 	has_and_belongs_to_many :courses, :join_table => 'clients_courses'
 	has_many :guides, :through => :courses
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	#phone_regex = ^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$
 
-	validates :name, :presence => true,
-									 :length => {:maximum => 50}		
 	validates :age, :presence => true
 	validates :email, :presence => true,
 										:format => {:with => email_regex},
@@ -17,7 +15,7 @@ class Client < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+			find(:all, :conditions => ['first_name LIKE ?', "%#{search}%"])
 		else
 			find(:all)
 		end

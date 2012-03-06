@@ -17,7 +17,7 @@ class GuidesController < ApplicationController
 	def create
 		@guide = Guide.new(params[:guide])
 		if @guide.save
-			flash[:success] = "Guide #{@guide.name} Created!"
+			flash[:success] = "Guide #{@guide.first_name} Created!"
 			redirect_to @guide
 		else
 			@title = "New Guide"

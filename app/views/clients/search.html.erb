@@ -1,0 +1,5 @@
+<ul class="checkbox-list">
+		<% @clients.each do |client| %>
+			<li><%= check_box_tag "course[client_ids][]", client.id, @course.clients.include?(client) %> <%= client.first_name+client.last_name %></li>
+		<% end %>
+</ul>

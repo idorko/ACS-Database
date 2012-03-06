@@ -1,1 +1,1 @@
-<%= @client.name %>, <%= @client.email %>
+<%= @guide.first_name + @guide.last_name %>, <%= @guide.email %>
