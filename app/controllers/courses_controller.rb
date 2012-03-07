@@ -9,6 +9,12 @@ class CoursesController < ApplicationController
 		@course = Course.find(params[:id])
 		@guides = Guide.all
 		@clients = Client.all	
+		if !@course.cliff.nil?
+			@cliff = @course.cliff
+		else
+			@cliff = Cliff.new
+		end
+		
 	end
 	
 	def new
@@ -24,6 +30,11 @@ class CoursesController < ApplicationController
 		@title = "Edit Course"
 		@guides = Guide.all
 		@clients = Client.search(params[:search])
+		if !@course.cliff.nil?
+			@cliff = @course.cliff
+		else
+			@cliff = Cliff.new
+		end
 	end
 
 	def update
@@ -37,6 +48,9 @@ class CoursesController < ApplicationController
 		if (!params[:course][:num_clients].blank?)
 			@client = Client.find(params[:course][:num_clients])	
 		end
+		if !params[:none][:cliff_id].blank?
+			@cliff = Cliff.find(params[:none][:cliff_id])
+		end
 
 		if @course.update_attributes(params[:course])
 			flash[:notice]="Course Updated."
@@ -45,6 +59,9 @@ class CoursesController < ApplicationController
 			end
 			if @client	
 				@client.courses << @course
+			end
+			if @cliff
+				@cliff.courses << @course
 			end
 			redirect_to @course
 		else
@@ -59,12 +76,18 @@ class CoursesController < ApplicationController
 		if !params[:client_ids].blank?
 			@clients = Client.find(params[:client_ids])
 		end
+		if !params[:none][:cliff_id].blank?
+			@cliff = Cliff.find(params[:none][:cliff_id])
+		end
 		if @course.save
 			flash[:success] = "Course Created!"
 			if @clients
 				@clients.each do |client|	
 					client.courses << @course
 				end
+			end
+			if @cliff
+				@cliff.courses << @course
 			end
 			redirect_to @course
 		else

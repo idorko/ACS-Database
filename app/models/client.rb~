@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
 	
-	attr_accessible :first_name, :last_name, :age, :email, :phone, :town, :state, :referal, :experience
+	attr_accessible  :first_name, :last_name, :age, :email, :phone, :town, :state, :referal, :experience
 	has_and_belongs_to_many :courses, :join_table => 'clients_courses'
 	has_many :guides, :through => :courses
 
@@ -15,7 +15,7 @@ class Client < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			find(:all, :conditions => ['first_name LIKE ?', "%#{search}%"])
+			find(:all, :conditions => ['last_name LIKE ?', "%#{search}%"])
 		else
 			find(:all)
 		end

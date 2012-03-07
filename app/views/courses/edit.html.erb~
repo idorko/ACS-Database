@@ -55,6 +55,14 @@
 	</td>
 </tr>
 </table>
+	<div class="field">
+			<b>Cliff:</b> <%= @cliff.name %><br />
+			<b>Change Cliff:</b> <%= select("none", "cliff_id", Cliff.all.collect{ |c| [c.name, c.id]}, {:include_blank => 'None'}  ) %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Change Course" %>
+	</div>
+<% end %>
 <%= form_tag edit_course_path("#{@course.id}"), :method => 'get' do %>
 	<p>
 		<b>Find Client:</b>
@@ -62,11 +70,6 @@
 		<%= submit_tag "Find Client", :name => nil %>
 	</p>
 <% end %>
-	<div class="actions">
-		<%= f.submit "Change Course" %>
-	</div>
-<% end %>
-
 
 
 

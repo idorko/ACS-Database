@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305235155) do
+ActiveRecord::Schema.define(:version => 20120307020205) do
 
   create_table "clients", :force => true do |t|
     t.integer  "age"
@@ -52,7 +52,10 @@ ActiveRecord::Schema.define(:version => 20120305235155) do
     t.datetime "updated_at",  :null => false
     t.integer  "client_id"
     t.integer  "guide_id"
+    t.integer  "cliff_id"
   end
+
+  add_index "courses", ["cliff_id", "date", "id"], :name => "index_courses_on_cliff_id_and_date_and_id"
 
   create_table "courses_guides", :id => false, :force => true do |t|
     t.integer "course_id"

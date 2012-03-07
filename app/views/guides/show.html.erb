@@ -1,1 +1,14 @@
-<%= @guide.first_name + " " + @guide.last_name %>, <%= @guide.email %>
+<h1> Guide Viewer </h1>
+<h3> Guide: <%= @guide.first_name+" "+@guide.last_name %> </h3> 
+<b> Email: </b> <%= @guide.email %><br />
+<b> Age: </b> <%= @guide.age %><br />
+<b> Phone: </b> <%= @guide.phonenum %><br />
+<b> Certifications: </b> <%= @guide.certifications %><br />
+<table>
+<tr>
+	<td>
+		<h3><%= "Courses:" %></h3>
+		<%= render :partial => 'courses/list' %>
+	</td>
+</table>
+

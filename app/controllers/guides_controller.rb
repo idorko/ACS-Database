@@ -7,6 +7,7 @@ class GuidesController < ApplicationController
 
 	def show
 		@guide = Guide.find(params[:id])
+		@courses = @guide.courses
 	end
 	
 	def new
@@ -23,5 +24,6 @@ class GuidesController < ApplicationController
 			@title = "New Guide"
 			render "new"
 		end
-	end	
+	end
+	
 end

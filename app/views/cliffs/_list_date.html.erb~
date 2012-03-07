@@ -1,0 +1,10 @@
+<ul class="cliffs">
+	<% @cliffs.each do |cliff| %>
+		<b> cliff.name </b><br/>
+			<% @cliffs.courses.each do |course| %>		
+			<li>
+			<%= link_to course.client[1].name, course %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

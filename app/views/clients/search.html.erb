@@ -16,6 +16,10 @@
 	<b>Course Type:</b> <%= text_field_tag "course[course_type]" %><br />
 	<b>Course Date:</b> <%= date_select "course", "date" %><br />
 	<b>Course Time:</b> <%= time_select "course", "time" %><br />
+	<div class="field">
+			<b>Cliff:</b>
+					<%= select("none", "cliff_id", Cliff.all.collect{ |c| [c.name, c.id]}, {:include_blank => 'None'}  ) %>
+	</div>
 	<%= submit_tag "Create Course", :name => nil %>
 <% end %>
 

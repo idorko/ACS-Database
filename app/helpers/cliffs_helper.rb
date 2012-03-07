@@ -1,0 +1,2 @@
+module CliffsHelper
+end
