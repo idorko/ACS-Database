@@ -1,9 +1,10 @@
 <ul class="cliffs">
+<% @cliffs = Cliff.all %>
 	<% @cliffs.each do |cliff| %>
-		<b> cliff.name </b><br/>
+		<b> <%= cliff.name %> </b><br/>
 			<% cliff.courses.each do |course| %>		
 			<li>
-			<%= link_to course.client[1].name, course %>
+			<%= link_to course.clients.first.first_name+ " "+course.clients.first.last_name, course %>
 			</li>
 		<% end %>
 	<% end %>

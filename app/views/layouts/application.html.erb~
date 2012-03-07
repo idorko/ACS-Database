@@ -45,7 +45,7 @@
 		<div id="rsidebar" class="span-6 last">
 
 			<h4> Current Courses </h4>
-			<%= form_tag ({:controller => :guides, :action => :list_date}) do %>
+			<%= form_tag ({:controller => :cliffs, :action => :list_date}) do %>
 				<%= date_select "course", "date" %> <br/>
 				<%= submit_tag "Change Date", :name => nil %>
 			<% end %>
