@@ -1,14 +1,16 @@
-<ul class="cliffs">
-<% @cliffs = Cliff.all %>
-	<% @cliffs.each do |cliff| %>
-		<b> <%= cliff.name %> </b><br/>
-				<% @courses = cliff.todays_courses %>
-			<% if @courses %>	
-				<% @courses.each do |course| %>		
-				<li>
-				<%= link_to "#{course.clients.first.name}, #{course.course_time}", course %>
-				</li>
+<section>
+	<ul>
+	<% @cliffs = Cliff.all %>
+		<% @cliffs.each do |cliff| %>
+			<b> <%= cliff.name %> </b><br/>
+					<% @courses = cliff.todays_courses %>
+				<% if @courses %>	
+					<% @courses.each do |course| %>		
+					<li>
+					<%= link_to "#{course.clients.first.name}, #{course.course_time}", course %>
+					</li>
+				<% end %>
 			<% end %>
 		<% end %>
-	<% end %>
-</ul>
+	</ul>
+</section>

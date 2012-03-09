@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
 
 	def index
 		@title = "Courses"
-		if params		
+		if params[:course]		
 			@date = Date.civil(params[:course][:"date(1i)"].to_i,params[:course][:"date(2i)"].to_i, params[:course][:"date(3i)"].to_i)
 		else
 			@date = today
@@ -13,8 +13,8 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
-		@guides = Guide.all
-		@clients = Client.all	
+		@guides = @course.guides.all
+		@clients = @coures.clients.all
 		if !@course.cliff.nil?
 			@cliff = @course.cliff
 		else

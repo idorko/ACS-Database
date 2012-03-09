@@ -6,57 +6,44 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->    
-    <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
-    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+
     <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
 		<%= javascript_include_tag :defaults %>
 </head>
  
-    <div class="container">
-
-      <div id="header" class="span-24">
+<body>
+	<header>
 				HEADER
         <%= image_tag("logo.png", :alt => "ACS", :class => "round") %>
-			</div>
-		
-			<div id="sidebar" class="column span-4">
-
-				<h3> Navigation </h3>		    
-<h4><%= button_to("New Course", {:controller => :courses, :action => :new},{:method => :get}) %></h4>				
-<nav class="round">
-
-          <ul>
-						<li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Clients", clients_path %></li>
-            <li><%= link_to "Guides", guides_path %></li>
-						<li><%= link_to "Courses", courses_path %></li>
-						<li><%= link_to "Cliffs", cliffs_path %></li>
-          </ul>
-        </nav>
-      </div>
-	
-		<div id="content" class ="column span-16">
-		CENTER COLUMN
-    	  <section class="round">
-     	  <% flash.each do |key, value| %>
-         	 <div class="flash" <%= key %>><%= value %></div>
-       	 <% end %>
-       	 <%= yield %>
-     	 	</section>
+	</header>
+	<div id="content">
+		<nav>
+		  <ul>
+<li><%= link_to "Home", root_path %></li>		
+					<li><%= link_to "Home", root_path %></li>
+		      <li><%= link_to "Clients", clients_path %></li>
+		      <li><%= link_to "Guides", guides_path %></li>	
+					<li><%= link_to "Courses", courses_path %></li>
+					<li><%= link_to "Cliffs", cliffs_path %></li>
+		  </ul>
+		</nav>
+		<div id="mainContent">
+			<section>
+				<% flash.each do |key, value| %>
+			 	 <div class="flash" <%= key %>><%= value %></div>
+				<% end %>
+				<%= yield %>
+		 	</section>
 		</div>
+		<aside>
 
-		<div id="rsidebar" class="column span-4 last">
-
-			<h3> Today's Courses: </h3>
-			 
 			<%= render :partial => 'cliffs/list_date' %>
-		</div>
-
-		<div id="footer" class="span-24">
-			<%= debug(params) if Rails.env.development? %>
-		</div>
-
-   </div>
+		</aside>
+	</div>
+	<footer>
+		<%= debug(params) if Rails.env.development? %>
+	</footer>
+</body>
 </html>
 

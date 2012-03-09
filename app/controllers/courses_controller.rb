@@ -13,8 +13,8 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
-		@guides = Guide.all
-		@clients = Client.all	
+		@guides = @course.guides.all
+		@clients = @course.clients.all
 		if !@course.cliff.nil?
 			@cliff = @course.cliff
 		else

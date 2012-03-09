@@ -1,29 +1,130 @@
+header, footer, aside, nav {
+	display: block;
+}
+
 body {
-	background: #fff;
+	margin: 0 auto;
+	width: 940px;
+	font: 13px/22px Helvetica, Arial, sans-serif;
+	background: #f0f0f0;
 }
 
-#header {
-	padding: 20px;
+h2 {
+	font-size: 28px;
+	line-height: 44px;
+	padding: 22px 0;
 }
 
-#sidebar {
-	margin-left: 20px;
-  margin-right: auto;
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	padding: 11px 0;
 }
+
+p {
+	padding-bottom: 22px;
+}
+
+
+nav ul {
+	margin: 0 auto;
+	width: 100px; 
+	list-style: none;
+}
+      
+	nav ul li a {  
+		display: block;  
+		marign-right: 40px;
+		width: 65px;
+		font-size: 14px;
+		line-height: 44px;
+		text-align: center;
+		text-decoration: none;
+		color: #000000;
+	}
+	
+	nav ul li a:hover {
+		color: #fff;
+	}
+		
+	nav ul li.selected a {
+		color: #fff;
+	}
 
 #content {
-	margin-left: auto;
-  margin-right: auto;
+	display: table;
+}
+	nav {
+		display: table-cell;
+		background: #FFFAFA;	
+	}
+	#mainContent	{
+		display: table-cell;
+		width: 605px;
+		padding-left: 22px;
+		background: #fff;	
+	}
+	
+	aside {
+		display: table-cell;
+		width: 235px;
+		background: #FFFAFA;
+		padding-left: 22px;	
+	}
+
+#clientLists {
+	display: table;
 }
 
-#rsidebar {
-  margin-left: auto;
-  margin-right: auto;
+	#clientCourseList {
+		display: table-cell;
+		width: 285px;
+		padding-bottom: 22px;
+	
+	}
+
+	#clientGuideList {
+		display: table-cell;
+		width: 285px;	
+		padding-bottom: 22px;
+		
+	}
+
+aside section ul {
+	list-style: none outside none;
+	margin: 0 22px 0 22px;
 }
 
-#footer {
-	padding: 20px;
+aside section ul li a {
+	color: #000000;
+	display: block;
+	text-decoration: none;
 }
 
+aside section ul li a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+#mainContent section ul {
+	list-style: none outside none;
+	margin: 0 0 0 22px;
+}
+
+#mainContent  section ul li a {
+	color: #000000;
+	display: block;
+	text-decoration: none;
+}
+
+#mainContent  section ul li a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+#clientCourseList h3, #clientGuideList h3 {
+	display: block;
+	margin: 0 0 0 22px;
+}
 
 
