@@ -1,2 +1,2 @@
 <h1> Cliffs Index </h1>
-render :partial => 'list'
+<%= render :partial => 'list' %>

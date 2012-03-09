@@ -1,7 +1,3 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
-	def today
-		Time.now.strftime("%Y-%m-%d")
-	end
 end

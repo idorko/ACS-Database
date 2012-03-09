@@ -20,8 +20,12 @@
         <%= image_tag("logo.png", :alt => "ACS", :class => "round") %>
 			</div>
 		
-			<div id="sidebar" class="span-3">
-		    <nav class="round">
+			<div id="sidebar" class="column span-5">
+
+				<h3> Navigation </h3>		    
+<h4><%= button_to("New Course", {:controller => :courses, :action => :new},{:method => :get}) %></h4>				
+<nav class="round">
+
           <ul>
 						<li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Clients", clients_path %></li>
@@ -32,7 +36,7 @@
         </nav>
       </div>
 	
-		<div id="content" class ="span-15">
+		<div id="content" class ="column span-14">
 		CENTER COLUMN
     	  <section class="round">
      	  <% flash.each do |key, value| %>
@@ -42,15 +46,13 @@
      	 	</section>
 		</div>
 
-		<div id="rsidebar" class="span-6 last">
+		<div id="rsidebar" class="column span-5 last">
 
-			<h4> Current Courses </h4>
-			<%= form_tag ({:controller => :cliffs, :action => :list_date}) do %>
-				<%= date_select "course", "date" %> <br/>
-				<%= submit_tag "Change Date", :name => nil %>
-			<% end %>
-		</div>
+			<h3> Today's Courses: </h3>
+			 
 			<%= render :partial => 'cliffs/list_date' %>
+		</div>
+
 		<div id="footer" class="span-24">
 			<%= debug(params) if Rails.env.development? %>
 		</div>

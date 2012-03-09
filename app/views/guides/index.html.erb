@@ -1,4 +1,5 @@
 <h1>All Guides</h1>
-
+<%= button_to("New Guide", {:controller => :guides, :action => :new},{:method => :get}) %>
+<br />
 <%= render :partial => 'list' %> 
 

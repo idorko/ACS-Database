@@ -12,4 +12,10 @@ class Course < ActiveRecord::Base
 	validates :date, :presence => true
 	validates :time, :presence => true
 
+	def course_time
+		self.time.strftime("%I:%M%p")
+	end
+	def course_date
+		self.date.strftime("%m-%d-%Y")
+	end
 end

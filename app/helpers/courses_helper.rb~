@@ -1,6 +1,9 @@
 module CoursesHelper
 
-	def client_belongs_to_course?(course)
-	
+	def course_time
+		self.time.strftime("%I:%M%p")
 	end
+	
+
+
 end

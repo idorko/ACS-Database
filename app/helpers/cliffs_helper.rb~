@@ -1,0 +1,11 @@
+module CliffsHelper	
+
+	def today
+		Time.now.strftime("%Y-%m-%d")
+	end
+
+	def todays_courses
+		self.courses.find_all_by_date(self.today)
+	end
+		
+end

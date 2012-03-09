@@ -1,2 +1,4 @@
 <h1> Cliffs Index </h1>
+<%= button_to("New Cliff", {:controller => :cliffs, :action => :new},{:method => :get}) %>
+<br />
 <%= render :partial => 'list' %>

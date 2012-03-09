@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
 	
-	attr_accessible  :first_name, :last_name, :age, :email, :phone, :town, :state, :referal, :experience
+	attr_accessible :first_name, :last_name, :age, :email, :phone, :town, :state, :referal, :experience
 	has_and_belongs_to_many :courses, :join_table => 'clients_courses'
 	has_many :guides, :through => :courses
 
@@ -19,6 +19,10 @@ class Client < ActiveRecord::Base
 		else
 			find(:all)
 		end
+	end
+
+	def name
+		"#{self.first_name +} #{self.last_name}"
 	end
 
 end

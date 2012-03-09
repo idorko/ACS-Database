@@ -1,7 +1,7 @@
 <ul class="courses">
 	<% @courses.each do |course| %>
 		<li>
-			<%= link_to course.date + " " + coures.time, course %>
+			<%= link_to "#{course.clients.first.name} -- #{course.course_time}", course %>
 		</li>
 	<% end %>
 </ul>

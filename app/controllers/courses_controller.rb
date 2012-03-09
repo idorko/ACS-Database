@@ -1,8 +1,14 @@
 class CoursesController < ApplicationController
 
 	def index
-		@title = "All Courses"
-		@courses = Course.all
+		@title = "Courses"
+		if params[:course]		
+			@date = Date.civil(params[:course][:"date(1i)"].to_i,params[:course][:"date(2i)"].to_i, params[:course][:"date(3i)"].to_i)
+		else
+			@date = today
+		end
+
+		@courses = Course.find_all_by_date(@date, :order => 'time')
 	end
 
 	def show
@@ -73,12 +79,18 @@ class CoursesController < ApplicationController
 	def create
 		@title = "Create Course"
 		@course = Course.new(params[:course])
+
 		if !params[:client_ids].blank?
 			@clients = Client.find(params[:client_ids])
-		end
+		else
+			flash[:error] = "You must select at least one client."
+			render 'new' and return
+		end		
+
 		if !params[:none][:cliff_id].blank?
 			@cliff = Cliff.find(params[:none][:cliff_id])
 		end
+
 		if @course.save
 			flash[:success] = "Course Created!"
 			if @clients

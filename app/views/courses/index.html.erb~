@@ -1,9 +1,16 @@
-<h1>All Courses</h1>
-
-<ul class="clients">
+<h1>Courses</h1>
+<%= button_to("New Course", {:controller => :courses, :action => :new},{:method => :get}) %>
+<br />
+<%= form_tag url_for(:controller => :courses, :action => :index), :method => 'get'  do %>
+	<%= date_select "course", "date", :order => [:month, :day, :year] %>
+	<%= submit_tag "Find Courses By Date", :name => nil %>
+<% end %>
+<ul class="courses">
+<%if @courses %>
 	<% @courses.each do |course| %>
 		<li>
-			<%= link_to course.name, course %>
+			<%= link_to "#{course.clients.first.name} -- #{course.course_time}", course %>
 		</li>
 	<% end %>
+<% end %>
 </ul>

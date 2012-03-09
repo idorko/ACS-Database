@@ -6,10 +6,16 @@ class Course < ActiveRecord::Base
 	has_and_belongs_to_many :guides, :join_table => 'courses_guides'
 	belongs_to :cliff
 
-	accepts_nested_attributes_for :client
+	accepts_nested_attributes_for :clients
 
 	validates :course_type, :presence => true
 	validates :date, :presence => true
 	validates :time, :presence => true
 
+	def course_time
+		self.time.strftime("%I:%M%p")
+	end
+	def course_date
+		self.date.strftime("%Y-%m-%d")
+	end
 end

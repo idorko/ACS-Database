@@ -2,10 +2,13 @@
 <% @cliffs = Cliff.all %>
 	<% @cliffs.each do |cliff| %>
 		<b> <%= cliff.name %> </b><br/>
-			<% cliff.courses.each do |course| %>		
-			<li>
-			<%= link_to course.clients.first.first_name+ " "+course.clients.first.last_name, course %>
-			</li>
+				<% @courses = cliff.todays_courses %>
+			<% if @courses %>	
+				<% @courses.each do |course| %>		
+				<li>
+				<%= link_to "#{course.clients.first.name}, #{course.course_time}", course %>
+				</li>
+			<% end %>
 		<% end %>
 	<% end %>
 </ul>

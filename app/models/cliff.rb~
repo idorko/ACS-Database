@@ -4,4 +4,9 @@ class Cliff < ActiveRecord::Base
 	has_many :courses
 	
 	validates :name, :presence => true, :uniqueness => {:case_sensitive => false}
+
+	def todays_courses
+		self.courses.find_all_by_date(today, :order=>'time')
+	end
+
 end
