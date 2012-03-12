@@ -25,5 +25,11 @@ class GuidesController < ApplicationController
 			render "new"
 		end
 	end
+
+	def destroy
+		Guide.find(params[:id]).destroy
+		flash[:success] = "Guide deleted."
+		redirect_to guides_path
+	end
 	
 end

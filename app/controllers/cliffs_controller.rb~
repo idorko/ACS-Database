@@ -28,7 +28,11 @@ class CliffsController < ApplicationController
 
 	def list_date
 		@cliffs = Cliff.all
-		
 	end
 
+	def destroy
+		Cliff.find(params[:id]).destroy
+		flash[:success] = "Course deleted."
+		redirect_to courses_path
+	end
 end

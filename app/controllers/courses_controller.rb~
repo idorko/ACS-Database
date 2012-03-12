@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
 	def show
 		@course = Course.find(params[:id])
 		@guides = @course.guides.all
-		@clients = @coures.clients.all
+		@clients = @course.clients.all
 		if !@course.cliff.nil?
 			@cliff = @course.cliff
 		else
@@ -110,5 +110,11 @@ class CoursesController < ApplicationController
 	
 	def clients_selected
 		@clients = Client.find(params[:client_ids])	
+	end
+
+	def destroy
+		Course.find(params[:id]).destroy
+		flash[:success] = "Course deleted."
+		redirect_to course_path
 	end
 end

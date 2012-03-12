@@ -1,0 +1,25 @@
+// Place all the styles related to the Clients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#clientLists {
+	display: table;
+}
+
+	#clientCourseList {
+		display: table-cell;
+		width: 285px;
+		padding-bottom: 22px;
+	
+	}
+
+	#clientGuideList {
+		display: table-cell;
+		width: 285px;	
+		padding-bottom: 22px;
+		
+	}
+
+#clientCourseList h3, #clientGuideList h3 {
+	display: block;
+	margin: 0 0 0 22px;
+}

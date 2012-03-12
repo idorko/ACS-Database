@@ -1,0 +1,2 @@
+<h1> Edit Guide </h1>
+<%= button_to "Delete #{@client.name}", @client, :method => :delete, :confirm => "Are you sure?", :title => "Delete Client" %> 

@@ -16,4 +16,9 @@ class Guide < ActiveRecord::Base
 										:uniqueness => {:case_sensitive => false}
 	validates :phonenum, :presence => true
 											 #:format => {:with => phone_regex}
+
+	def name
+		"#{self.first_name} #{self.last_name}"
+	end
+
 end

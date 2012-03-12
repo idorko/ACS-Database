@@ -111,4 +111,10 @@ class CoursesController < ApplicationController
 	def clients_selected
 		@clients = Client.find(params[:client_ids])	
 	end
+
+	def destroy
+		Course.find(params[:id]).destroy
+		flash[:success] = "Course deleted."
+		redirect_to courses_path
+	end
 end

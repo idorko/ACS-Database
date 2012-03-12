@@ -18,47 +18,59 @@
 		<%= f.label :time %><br />
 		<%= f.time_select :time %>
 	</div>
-<table>
-<tr> 
-	<td>	
-		<b>Clients</b>
-		<ul class="checkbox-list">
-		<% @course.clients.each do |client| %>
-			<li><%= check_box_tag "course[client_ids][]", client.id, @course.clients.include?(client) %> <%= client.first_name+" "+client.last_name %></li>
-		<% end %>
-	</ul>
-	</td>
-	<td>
-		<b>Guides:</b>
-			<ul class="checkbox-list">
-			<% @course.guides.each do |guide| %>
-				<li><%= check_box_tag "course[guide_ids][]", guide.id, @course.guides.include?(guide) %> <%= guide.first_name+" "+guide.last_name %></li>
-			<% end %>
-		</ul>
-	</td>
-</tr>
-<tr>
 
-	<td>
-			<div id="client_list" class ="field">			
-				<b>Add Client:</b><br/>
-				<%= f.collection_select(:num_clients, @clients, :id , :first_name, {:include_blank => 'none', :selected => 'none'} ) %>
+	<div id="courseLists" >
+		
+		<div id="row">
+
+			<div id = "courseClientList">
+				<ul class="checkbox-list">
+				<b>Clients:</b>
+				<% @course.clients.each do |client| %>
+					<li><%= check_box_tag "course[client_ids][]", client.id, @course.clients.include?(client) %> <%= client.name %></li>
+				<% end %>
+			</ul>
 			</div>
-	</td>	
-	
-	<td>
-			<div class="field">
-					<b>Add Guide:</b><br/>
-					<%= f.collection_select(:num_guides, @guides, :id , :first_name, {:include_blank => 'none', :selected => 'none'} ) %>
-				</div>
 
-	</td>
-</tr>
-</table>
-	<div class="field">
-			<b>Cliff:</b> <%= @cliff.name %><br />
-			<b>Change Cliff:</b> <%= select("none", "cliff_id", Cliff.all.collect{ |c| [c.name, c.id]}, {:include_blank => 'None'}  ) %>
+			<div id = "courseGuideList">
+					<ul class="checkbox-list">
+					<b>Guides:</b>
+					<% @course.guides.each do |guide| %>
+						<li><%= check_box_tag "course[guide_ids][]", guide.id, @course.guides.include?(guide) %> <%= guide.name %></li>
+					<% end %>
+				</ul>
+			</div>
+
+			<div id="courseCliff" class="field">
+				<ul>
+					<b>Cliff:</b> <%= @cliff.name %><br />
+				</ul>			
+			</div>
+
+		</div>
+	
+			<div id="row">
+				<div id="courseAddClient" class ="field">
+					<ul>
+						<b>Add Client:</b><br/>
+						<%= f.collection_select(:num_clients, @clients, :id , :first_name, {:include_blank => 'none', :selected => 'none'} ) %>
+					</ul>		
+				</div>
+	
+				<div id="courseAddGuide" class="field">
+					<ul>
+						<b>Add Guide:</b><br/>
+						<%= f.collection_select(:num_guides, @guides, :id , :first_name, {:include_blank => 'none', :selected => 'none'} ) %>
+					</ul>
+			</div>
+			<div id="courseChangeCliff">
+			<ul>
+				<b>Change Cliff:</b> <%= select("none", "cliff_id", Cliff.all.collect{ |c| [c.name, c.id]}, {:include_blank => 'None'}  ) %>
+				</ul>			
+			</div>
+		</div>
 	</div>
+
 	<div class="actions">
 		<%= f.submit "Change Course" %>
 	</div>
@@ -70,6 +82,7 @@
 		<%= submit_tag "Find Client", :name => nil %>
 	</p>
 <% end %>
+<%= button_to "Delete Course", @course, :method => :delete, :confirm => "Are you sure?", :title => "Delete Course" %>
 
 
 

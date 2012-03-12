@@ -2,7 +2,8 @@
 <header>
 	<h1> Client Viewer </h1>
 </header>
-	<h3> Client: <%= @client.first_name+" "+@client.last_name %> </h3> 
+	<h3> Client: <%= @client.name%> </h3>
+
 	<b> Email: </b> <%= @client.email %><br />
 	<b> Age: </b> <%= @client.age %><br />
 	<b> Phone: </b> <%= @client.phone %><br />
@@ -26,3 +27,4 @@
 		<%= render :partial => 'guides/list' %>
 	</div>
 </div>
+

@@ -1,5 +1,5 @@
 <h1> Edit Client </h1>
-
+<%= button_to "Delete #{@client.name}", @client, :method => :delete, :confirm => "Are you sure?", :title => "Delete Client" %> 
 <%= form_for(@client) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>	
 	<div class="field">
@@ -35,6 +35,7 @@
 		<%= f.text_field :experience %>
 	</div>
 	<div class="actions">
-		<%= f.submit "Add Client" %>
+		<%= f.submit "Update Client" %>
 	</div>
 <% end %> 
+

@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
 
 					attr_accessible :client_ids, :guide_ids, :num_clients, :num_guides, :experience, :course_type, :date, :time, :contact
 
-	has_and_belongs_to_many :clients, :join_table => 'clients_courses'
+	has_and_belongs_to_many :clients, :join_table => 'clients_courses', :dependent => :delete_all
 	has_and_belongs_to_many :guides, :join_table => 'courses_guides'
 	belongs_to :cliff
 
@@ -16,6 +16,6 @@ class Course < ActiveRecord::Base
 		self.time.strftime("%I:%M%p")
 	end
 	def course_date
-		self.date.strftime("%Y-%m-%d")
+		self.date.strftime("%m-%d-%Y")
 	end
 end

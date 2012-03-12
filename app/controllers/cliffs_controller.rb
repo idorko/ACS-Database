@@ -30,4 +30,9 @@ class CliffsController < ApplicationController
 		@cliffs = Cliff.all
 	end
 
+	def destroy
+		Cliff.find(params[:id]).destroy
+		flash[:success] = "Cliff deleted."
+		redirect_to cliffs_path
+	end
 end

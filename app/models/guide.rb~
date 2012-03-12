@@ -1,6 +1,6 @@
 class Guide < ActiveRecord::Base
 	
-	attr_accessible :name, :age, :email, :phonenum, :certifications
+	attr_accessible :first_name, :last_name, :age, :email, :phonenum, :certifications
 	
 	has_and_belongs_to_many :courses, :join_table => 'courses_guides'	
 	has_many :clients, :through => :courses
@@ -16,4 +16,8 @@ class Guide < ActiveRecord::Base
 										:uniqueness => {:case_sensitive => false}
 	validates :phonenum, :presence => true
 											 #:format => {:with => phone_regex}
+
+	def name
+		"#{self.first_name} #{self.last_name}"
+	end
 end

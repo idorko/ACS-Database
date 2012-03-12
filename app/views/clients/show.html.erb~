@@ -2,7 +2,8 @@
 <header>
 	<h1> Client Viewer </h1>
 </header>
-	<h3> Client: <%= @client.first_name+" "+@client.last_name %> </h3> 
+	<h3> Client: <%= @client.name%> </h3>
+
 	<b> Email: </b> <%= @client.email %><br />
 	<b> Age: </b> <%= @client.age %><br />
 	<b> Phone: </b> <%= @client.phone %><br />
@@ -16,13 +17,14 @@
 			<%= submit_tag "Create New Course for #{@client.first_name}", :name => nil %>
 		<% end %>
 <div id="clientLists">			
-<div id="clientCourseList">
-	<h3><%= "Courses:" %></h3>
-	<%= render :partial => 'courses/list' %>
-</div>
+	<div id="clientCourseList">
+		<h3><%= "Courses:" %></h3>
+		<%= render :partial => 'courses/list' %>
+	</div>
 		
-<div id="clientGuideList">	
-	<h3> <%= "Guides:" %></h3>
-	<%= render :partial => 'guides/list' %>
+	<div id="clientGuideList">	
+		<h3> <%= "Guides:" %></h3>
+		<%= render :partial => 'guides/list' %>
+	</div>
 </div>
-
+<%= button_to "Delete #{@client.name}", @course, :method => :delete, :confirm => "Are you sure?", :title => "Delete Course" %> 

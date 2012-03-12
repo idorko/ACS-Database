@@ -12,4 +12,6 @@
  *= require_tree .
 */
 
-
+#row {
+	display: table-row;
+}
