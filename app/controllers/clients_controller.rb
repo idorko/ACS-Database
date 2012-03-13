@@ -38,6 +38,17 @@ class ClientsController < ApplicationController
 		@title = "Edit Client"
 	end
 
+	def update
+		@client = Client.find(params[:id])
+		if @client.update_attributes(params[:client])
+			flash[:notice]="#{@client.name} Updated."
+			redirect_to @client
+		else 
+			flash[:error]="Error Updating #{@client.name}."
+			redirect_to @client
+		end	
+	end
+	
 	def search
 		@title = "Create Course"
 		@course = Course.new()

@@ -26,6 +26,23 @@ class GuidesController < ApplicationController
 		end
 	end
 
+	def edit
+		@guide = Guide.find(params[:id])
+		@title = "Edit Guide"
+	end
+
+	def update
+		@guide = Guide.find(params[:id])
+		if @guide.update_attributes(params[:guide])
+			flash[:notice]="#{@guide.name} Updated."
+			redirect_to @guide
+		else 
+			flash[:error]="Error Updating #{@guide.name}."
+			redirect_to @guide
+		end	
+	end
+	
+
 	def destroy
 		Guide.find(params[:id]).destroy
 		flash[:success] = "Guide deleted."

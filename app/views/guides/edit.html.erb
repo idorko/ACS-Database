@@ -1,2 +1,33 @@
 <h1> Edit Guide </h1>
-<%= button_to "Delete #{@client.name}", @client, :method => :delete, :confirm => "Are you sure?", :title => "Delete Client" %> 
+<%= button_to "Delete #{@guide.name}", @guide, :method => :delete, :confirm => "Are you sure?", :title => "Delete guide" %> 
+<%= form_for(@guide) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>	
+	<div class="field">
+		<%= f.label :first_name %><br />
+		<%= f.text_field :first_name %>
+	</div>
+	<div class="field">
+		<%= f.label :last_name %><br />
+		<%= f.text_field :last_name %>
+	</div>
+	<div class="field">
+		<%= f.label :email %><br />
+		<%= f.text_field :email %>
+	</div>
+	<div class="field">
+		<%= f.label :age %><br />
+		<%= f.number_field :age %>
+	</div>
+	<div class="field">
+		<%= f.label "Phone #" %><br />
+		<%= f.text_field :phonenum %>
+	</div>
+	<div class="field">
+		<%= f.label :certifications %><br />
+		<%= f.text_field :certifications %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Update Guide" %>
+	</div>
+<% end %> 
+

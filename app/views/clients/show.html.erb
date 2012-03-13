@@ -11,11 +11,13 @@
 	<b> State: </b> <%= @client.state %><br />
 	<b> Referal: </b> <%= @client.referal %><br />
 	<b> Experience: </b> <%= @client.experience %><br />
-	<br />
+<%= button_to "Edit #{@client.name}", edit_client_path(@course), :method => 'get' %>
+<br />
 	<%= form_tag ({:controller => :clients, :action => :search}) do %>
 			<%= hidden_field_tag :id, @client.id %>
 			<%= submit_tag "Create New Course for #{@client.first_name}", :name => nil %>
 		<% end %>
+<br />
 <div id="clientLists">			
 	<div id="clientCourseList">
 		<h3><%= "Courses:" %></h3>

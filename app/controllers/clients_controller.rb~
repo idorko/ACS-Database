@@ -38,6 +38,12 @@ class ClientsController < ApplicationController
 		@title = "Edit Client"
 	end
 
+	def update
+		@client = Client.find(params[:id])
+		if @client.update_attributes(params[:client])
+			flash[:notice]="#{@client.name} Updated."	
+	end
+	
 	def search
 		@title = "Create Course"
 		@course = Course.new()
@@ -54,5 +60,10 @@ class ClientsController < ApplicationController
 		end
 		#@clients = Client.all	
 	end
-
+	
+	def destroy
+		Client.find(params[:id]).destroy
+		flash[:success] = "Client deleted."
+		redirect_to clients_path
+	end
 end

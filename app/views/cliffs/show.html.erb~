@@ -1,5 +1,10 @@
 <h1> Cliff Viewer </h1>
 <h3> Cliff Name: <%= @cliff.name %></h3> <br />
-<h4> Courses: </h4> <br />
-<%= render :partial => 'courses/list' %>
+<%= button_to "Edit #{@cliff.name}", edit_cliff_path(@cliff), :method => 'get' %>
+<br />
+	<div id="clientCourseList">
+		<h3><%= "Courses:" %></h3>
+		<%= render :partial => 'courses/list' %>
+	</div>
+
 

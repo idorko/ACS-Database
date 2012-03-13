@@ -8,8 +8,8 @@ class Guide < ActiveRecord::Base
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	#phone_regex = ^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$
 
-	#validates :name, :presence => true,
-		#							 :length => {:maximum => 50}
+	validates :first_name, :presence => true
+	validates :last_name, :presence => true
 	validates :age, :presence => true
 	validates :email, :presence => true,
 										:format => {:with => email_regex},

@@ -26,10 +26,27 @@ class GuidesController < ApplicationController
 		end
 	end
 
+	def edit
+		@guide = Guide.find(params[:id])
+		@title = "Edit Guide"
+	end
+
+	def update
+		@client = Client.find(params[:id])
+		if @client.update_attributes(params[:client])
+			flash[:notice]="#{@client.name} Updated."
+			redirect_to @client
+		else 
+			flash[:error]="Error Updating #{@client.name}."
+			redirect_to @client
+		end	
+	end
+	
+
 	def destroy
 		Guide.find(params[:id]).destroy
-		flash[:success] = "Guidee deleted."
-		redirect_to courses_path
+		flash[:success] = "Guide deleted."
+		redirect_to guides_path
 	end
 	
 end

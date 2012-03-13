@@ -1,7 +1,7 @@
 <ul class="cliffs">
 	<% @cliffs.each do |cliff| %>
 		<li>
-			<%= link_to cliff.name cliff %>
+			<%= link_to cliff.name, cliff %>
 		</li>
 	<% end %>
 </ul>

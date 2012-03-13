@@ -30,9 +30,26 @@ class CliffsController < ApplicationController
 		@cliffs = Cliff.all
 	end
 
+	def edit
+		@cliff = Cliff.find(params[:id])
+		@title = "Edit cliff"
+	end
+
+	def update
+		@cliff = Cliff.find(params[:id])
+		if @cliff.update_attributes(params[:cliff])
+			flash[:notice]="#{@cliff.name} Updated."
+			redirect_to @cliff
+		else 
+			flash[:error]="Error Updating #{@cliff.name}."
+			redirect_to @cliff
+		end	
+	end
+
 	def destroy
 		Cliff.find(params[:id]).destroy
-		flash[:success] = "Course deleted."
-		redirect_to courses_path
+		flash[:success] = "Cliff deleted."
+		redirect_to cliffs_path
 	end
+
 end

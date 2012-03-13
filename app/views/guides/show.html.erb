@@ -1,9 +1,11 @@
 <h1> Guide Viewer </h1>
-<h3> Guide: <%= @guide.first_name+" "+@guide.last_name %> </h3> 
+<h3> Guide: <%= @guide.name %> </h3>
+
 <b> Email: </b> <%= @guide.email %><br />
 <b> Age: </b> <%= @guide.age %><br />
 <b> Phone: </b> <%= @guide.phonenum %><br />
 <b> Certifications: </b> <%= @guide.certifications %><br />
+<%= button_to "Edit Guide", edit_guide_path(@guide), :method => 'get' %> 
 <table>
 <tr>
 	<td>
