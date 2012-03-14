@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 AcsDatabase::Application.initialize!
 
 #set time zone
-ENV['TZ'] = 'US/Eastern'
+ENV['TV'] = 'US/Eastern'
