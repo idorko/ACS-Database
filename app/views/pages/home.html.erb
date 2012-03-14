@@ -1,6 +1,6 @@
 <h1>Atlantic Climbing School Database</h1>
 
-<p> 
-	This is the home page for the Atlantic Climbing School Database.
-</p>
-
+<%= form_tag url_for(:controller => :courses, :action => :index), :method => 'get'  do %>
+	<%= date_select "course", "date", :order => [:month, :day, :year] %>
+	<%= submit_tag "Find Courses By Date", :name => nil %>
+<% end %>

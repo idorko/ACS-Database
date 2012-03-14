@@ -23,12 +23,12 @@
 		<%= f.text_field :phone %>
 	</div>
 	<div class="field">
-		<%= f.label :town %><br />
-		<%= f.text_field :town %>
+		<%= f.label :state %><br />
+		<%= select_tag "client[state]", options_for_select(us_states, :selected => @course.state) %>
 	</div>
 	<div class="field">
-		<%= f.label :state %><br />
-		<%= f.text_field :state %>
+		<%= f.label :town %><br />
+		<%= f.text_field :town %>
 	</div>
 	<div class="field">
 		<%= f.label :referal %><br />

@@ -1,5 +1,5 @@
 <h1> Edit Course </h1>
-
+<%= button_to "Delete Course", @course, :method => :delete, :confirm => "Are you sure?", :title => "Delete Course" %>
 <%= form_for(@course, :action => 'update') do |f| %>
 <%= render 'shared/error_messages', :object => f.object %>	
 	<div class="field">
@@ -82,7 +82,7 @@
 		<%= submit_tag "Find Client", :name => nil %>
 	</p>
 <% end %>
-<%= button_to "Delete Course", @course, :method => :delete, :confirm => "Are you sure?", :title => "Delete Course" %>
+
 
 
 

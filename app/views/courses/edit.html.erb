@@ -2,14 +2,7 @@
 <%= button_to "Delete Course", @course, :method => :delete, :confirm => "Are you sure?", :title => "Delete Course" %>
 <%= form_for(@course, :action => 'update') do |f| %>
 <%= render 'shared/error_messages', :object => f.object %>	
-	<div class="field">
-		<%= f.label :experience %><br />
-		<%= f.number_field :experience %>
-	</div>
-	<div class="field">
-		<%= f.label 'Course Type' %><br />
-		<%= f.text_field :course_type %>
-	</div>
+	<b>Course Type:</b> <%= select_tag "course[course_type]", options_for_select(course_types, :selected => @course.course_type)  %>
 	<div class="field">
 		<%= f.label :date %><br />
 		<%= f.date_select :date %>

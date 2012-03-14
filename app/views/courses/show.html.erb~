@@ -1,14 +1,14 @@
 
 <h1> Course Viewer </h1>
-<%= button_to "Edit Course", edit_course_path(@course) %>
-<b>Course Date: </b><%= @course.date %> <br />
-<b>Course Time: </b><%= @course.time %> <br />
+<%= button_to "Edit Course", edit_course_path(@course), :method => 'get' %>
+<b>Course Date: </b><%= @course.course_date %> <br />
+<b>Course Time: </b><%= @course.course_time %> <br />
 <b>Course Type: </b><%= @course.course_type %> <br />
 <b>Client Experience: </b><%= @course.experience %>
 <br />
 <b>Cliff: </b><%= @cliff.name %>
 <br />
-
+<br />
 <div id="clientLists">			
 	<div id="clientCourseList">
 		<h3><%= "Clients:" %></h3>
