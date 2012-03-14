@@ -4,5 +4,3 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 AcsDatabase::Application.initialize!
 
-#set time zone
-ENV['TZ'] = 'US/Eastern'

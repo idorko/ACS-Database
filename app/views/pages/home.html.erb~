@@ -1,6 +1,24 @@
 <h1>Atlantic Climbing School Database</h1>
 
-<p> 
-	This is the home page for the Atlantic Climbing School Database.
-</p>
+<%= form_tag url_for(:controller => :pages, :action => :home), :method => 'get'  do %>
+	<%= date_select "course", "date", :order => [:month, :day, :year] %>
+	<%= submit_tag "Find Courses By Date", :name => nil %>
+<% end %>
 
+<% if !@dates.empty? %>
+	<div id="week">
+		<% for i in 0..6 %>
+			<div id="day">
+				<ul>	
+					<b> <%= "#{@days[i]}, #{@dates[i].strftime("%m-%d-%Y")}" %></b>
+					<% @week[i].each do |day| %>
+						<% day.each do |course| %>
+							<% if course %>
+								<li><%= link_to "#{course.clients.first.name} -- #{course.course_time} -- #{if course.cliff then course.cliff.name else "Unassigned Cliff" end} -- #{if course.guides.first then course.guides.first.name else "Unassigned Guide" end}" %></li>
+							<% end %>
+						<% end %>
+					<% end %>				
+				</div>
+		<% end %>
+	</div>
+<% end %>		
