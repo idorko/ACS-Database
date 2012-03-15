@@ -23,12 +23,19 @@ class PagesController < ApplicationController
 				@dates.sort!{|a,b| b.day <=> a.day }
 				@dates.reverse!
 		
-			@week = [[],[],[],[],[],[],[]]
-		
-			#find courses for each day
+			@week = [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]]
+			@courses = []
 			for i in 0..6 
-				@week[i] << Course.fin	d_all_by_date(@dates[i].strftime("%Y-%m-%d"), :order => 'time')
+				@courses = Course.find_all_by_date(@dates[i].strftime("%Y-%m-%d"), :order => 'time')
+				@courses.each do |course| 
+					if course[0].time.strftime("%I").to_i == 12
+						@week[i][0] << course
+					else
+						@week[i][1] << course
+					end
+				end	
+				@courses = []
 			end
-		end
+		end	
 	end
 end

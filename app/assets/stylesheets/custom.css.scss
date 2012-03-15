@@ -181,3 +181,16 @@ aside section ul li a:hover {
   font-size: 12px;
   list-style: square;
 }
+
+#week {
+	display: table;
+}
+
+	#day {
+		display: table-cell;
+		width: 10px;
+		padding-bottom: 10px;
+	
+	}
+
+
