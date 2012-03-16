@@ -1,0 +1,13 @@
+module PagesHelper
+
+	def unallocated_guides(half_day)
+		@guides = []
+		half_day.each do |course|
+			course.guides.each do |guide|
+				@guides << guide
+			end
+		end
+		return @guides
+	end
+
+end

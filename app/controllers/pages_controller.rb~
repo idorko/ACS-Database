@@ -23,12 +23,15 @@ class PagesController < ApplicationController
 				@dates.sort!{|a,b| b.day <=> a.day }
 				@dates.reverse!
 		
+			#split courses into am/pm per day, pull out guides for 
+			#determining unallocated resources
 			@week = [[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]],[[],[]]]
 			@courses = []
 			for i in 0..6 
+				#get all courses, put into am/pm arrays
 				@courses = Course.find_all_by_date(@dates[i].strftime("%Y-%m-%d"), :order => 'time')
 				@courses.each do |course| 
-					if course.time.strftime("%I").to_i < 12
+					if course.ampm == "AM"
 						@week[i][0] << course
 					else
 						@week[i][1] << course

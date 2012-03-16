@@ -16,15 +16,19 @@
 						<%= if j == 0  then "AM Courses:" end %>
 						<%= if j == 1 then "PM Courses:" end %>	
 						</b>						
-	<% @week[i][j].each do |course| %>						
-								<% if course %>
+						<% @week[i][j].each do |course| %>						
 									<ul>
-									<li><b><%= link_to "#{course.clients.first.name} #{course.course_time}" %></b>
+									<li><b><%= link_to "#{course.clients.first.name} #{course.course_time}", course %></b>
 									 <%= "#{if course.cliff then course.cliff.name else "Unassigned Cliff" end} -- #{if course.guides.first then course.guides.first.name else "Unassigned Guide" end}" %>
 									</li>
 									</ul>
-								<% end %>
-						<% end %>		
+						<% end %>
+						<br />
+						<b>Unassigned Guides:</b>
+						<br />		
+						<% unallocated_guides(@week[i][j]).each do |guide| %>
+							<%= if guide then guide.name end %>
+						<% end %>
 					</div>
 				<% end %>			
 			</div>	
