@@ -8,26 +8,27 @@
 <% if !@dates.empty? %>
 	<div id="week">
 		<% for i in 0..6 %>
-			<div id="day">
-				<ul>	
+			<div id="day">	
 					<b> <%= "#{@days[i]}, #{@dates[i].strftime("%m-%d-%Y")}" %></b><br />
-				<div id="halfDay">	
-					<% @week[i][0].each do |course| %>						
-							<b>AM Courses:</b>
-							<% if course %>
-								<li><%= link_to "#{course.clients.first.name} -- #{course.course_time} -- #{if course.cliff then course.cliff.name else "Unassigned Cliff" end} -- #{if course.guides.first then course.guides.first.name else "Unassigned Guide" end}" %></li>
-							<% end %>
-					<% end %>		
-				</div>
-				<div id="halfDay">		
-					<% @week[i][1].each do |course| %>
-							<b>PM Courses:</b>
-							<% if course %>
-								<li><%= link_to "#{course.clients.first.name} -- #{course.course_time} -- #{if course.cliff then course.cliff.name else "Unassigned Cliff" end} -- #{if course.guides.first then course.guides.first.name else "Unassigned Guide" end}" %></li>
-							<% end %>
-					<% end %>		
-				</div>	
-			</div>
+				<% for j in 0..1 %>
+					<div id="clientCourseList">
+						<b>
+						<%= if j == 0  then "AM Courses:" end %>
+						<%= if j == 1 then "PM Courses:" end %>	
+						</b>						
+	<% @week[i][j].each do |course| %>						
+								<% if course %>
+									<ul>
+									<li><b><%= link_to "#{course.clients.first.name} #{course.course_time}" %></b>
+									 <%= "#{if course.cliff then course.cliff.name else "Unassigned Cliff" end} -- #{if course.guides.first then course.guides.first.name else "Unassigned Guide" end}" %>
+									</li>
+									</ul>
+								<% end %>
+						<% end %>		
+					</div>
+				<% end %>			
+			</div>	
 		<% end %>
 	</div>
 <% end %>		
+

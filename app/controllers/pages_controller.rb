@@ -28,7 +28,7 @@ class PagesController < ApplicationController
 			for i in 0..6 
 				@courses = Course.find_all_by_date(@dates[i].strftime("%Y-%m-%d"), :order => 'time')
 				@courses.each do |course| 
-					if course.time.strftime("%I").to_i == 12
+					if course.time.strftime("%I").to_i < 12
 						@week[i][0] << course
 					else
 						@week[i][1] << course
