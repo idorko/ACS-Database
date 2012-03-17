@@ -50,6 +50,13 @@ class CoursesController < ApplicationController
 
 		if (!params[:course][:num_guides].blank?)
 			@guide = Guide.find(params[:course][:num_guides])
+			#check to see if guide has already been assigned to a course for that timeslot.
+			@guide.courses.find_all_by_date(@course.course_date, :order => 'time').each do |course_item|
+				if course_item.ampm == @course.ampm
+					flash[:error]="#{@guide.name} has already been assigned to a course on #{@course.course_date}	at #{@course.course_time}."
+					redirect_to edit_course_path
+				end				
+			end
 		end
 		if (!params[:course][:num_clients].blank?)
 			@client = Client.find(params[:course][:num_clients])	
@@ -72,7 +79,7 @@ class CoursesController < ApplicationController
 			redirect_to @course
 		else
 			flash[:error]="Error Updating Course."
-			redirect_to @course
+			redirect_to edit_course_path
 		end
 	end
 

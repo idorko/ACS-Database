@@ -16,7 +16,7 @@ class Course < ActiveRecord::Base
 		self.time.strftime("%I:%M%p")
 	end
 	def course_date
-		self.date.strftime("%m-%d-%Y")
+		self.date.strftime("%Y-%m-%d")
 	end
 	def ampm
 		return self.time.strftime("%p") 
