@@ -32,13 +32,13 @@ class GuidesController < ApplicationController
 	end
 
 	def update
-		@client = Client.find(params[:id])
-		if @client.update_attributes(params[:client])
-			flash[:notice]="#{@client.name} Updated."
-			redirect_to @client
+		@guide = Guide.find(params[:id])
+		if @guide.update_attributes(params[:guide])
+			flash[:notice]="#{@guide.name} Updated."
+			redirect_to @guide
 		else 
-			flash[:error]="Error Updating #{@client.name}."
-			redirect_to @client
+			flash[:error]="Error Updating #{@guide.name}."
+			redirect_to @guide
 		end	
 	end
 	

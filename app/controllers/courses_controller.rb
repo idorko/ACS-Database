@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def index
 		@title = "Courses"
 		if params[:course]		

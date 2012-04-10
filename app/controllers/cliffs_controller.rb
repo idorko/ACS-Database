@@ -1,5 +1,7 @@
 class CliffsController < ApplicationController
-		
+
+	before_filter :authenticate_user!
+	
 	def index
 		@title = "All Cliffs"
 		@cliffs = Cliff.all

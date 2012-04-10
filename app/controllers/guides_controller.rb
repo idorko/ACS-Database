@@ -1,5 +1,7 @@
 class GuidesController < ApplicationController
 	
+	before_filter :authenticate_user!
+
 	def index
 		@title = "All Guides"
 		@guides = Guide.all

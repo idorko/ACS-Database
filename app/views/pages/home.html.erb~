@@ -1,38 +1,42 @@
 <h1>Atlantic Climbing School Database</h1>
+<% if user_signed_in? %>
+	<%= form_tag url_for(:controller => :pages, :action => :home), :method => 'get'  do %>
+		<%= date_select "course", "date", :order => [:month, :day, :year] %>
+		<%= submit_tag "Find Courses By Date", :name => nil %>
+	<% end %>
 
-<%= form_tag url_for(:controller => :pages, :action => :home), :method => 'get'  do %>
-	<%= date_select "course", "date", :order => [:month, :day, :year] %>
-	<%= submit_tag "Find Courses By Date", :name => nil %>
+	<% if !@dates.empty? %>
+		<div id="week">
+			<% for i in 0..6 %>
+				<div id="day">	
+						<b> <%= "#{@days[i]}, #{@dates[i].strftime("%m-%d-%Y")}" %></b><br />
+					<% for j in 0..1 %>
+						<div id="clientCourseList">
+							<b>
+							<%= if j == 0  then "AM Courses:" end %>
+							<%= if j == 1 then "PM Courses:" end %>	
+							</b>						
+							<% @week[i][j].each do |course| %>						
+										<ul>
+										<li><b><%= link_to "#{course.clients.first.name} #{course.course_time}", course %></b>
+										 <%= "#{if course.cliff then course.cliff.name else "Unassigned Cliff" end} -- #{if course.guides.first then course.guides.first.name else "Unassigned Guide" end}" %>
+										</li>
+										</ul>
+							<% end %>
+							<br />
+							<b>Unassigned Guides:</b>
+							<br />		
+							<% unallocated_guides(@week[i][j]).each do |guide| %>
+								<%= if guide then guide.name end %>
+							<% end %>
+						</div>
+					<% end %>			
+				</div>	
+			<% end %>
+		</div>
+	<% end %>	
+<% else %>
+	<%= link_to('Login', new_user_session_path)  %>
+<%= link_to('Sign up', new_user_registration_path) %>		
 <% end %>
-
-<% if !@dates.empty? %>
-	<div id="week">
-		<% for i in 0..6 %>
-			<div id="day">	
-					<b> <%= "#{@days[i]}, #{@dates[i].strftime("%m-%d-%Y")}" %></b><br />
-				<% for j in 0..1 %>
-					<div id="clientCourseList">
-						<b>
-						<%= if j == 0  then "AM Courses:" end %>
-						<%= if j == 1 then "PM Courses:" end %>	
-						</b>						
-						<% @week[i][j].each do |course| %>						
-									<ul>
-									<li><b><%= link_to "#{course.clients.first.name} #{course.course_time}", course %></b>
-									 <%= "#{if course.cliff then course.cliff.name else "Unassigned Cliff" end} -- #{if course.guides.first then course.guides.first.name else "Unassigned Guide" end}" %>
-									</li>
-									</ul>
-						<% end %>
-						<br />
-						<b>Unassigned Guides:</b>
-						<br />		
-						<% unallocated_guides(@week[i][j]).each do |guide| %>
-							<%= if guide then guide.name end %>
-						<% end %>
-					</div>
-				<% end %>			
-			</div>	
-		<% end %>
-	</div>
-<% end %>		
 

@@ -6,13 +6,13 @@ body {
 	margin: 0 auto;
 	width: 940px;
 	font: 13px/22px Helvetica, Arial, sans-serif;
-	background: #f0f0f0;
+	background: #00FA9A;
+	text-align: center;
 }
 
 h2 {
 	font-size: 28px;
 	line-height: 44px;
-	padding: 22px 0;
 }
 
 h3 {
@@ -34,7 +34,6 @@ nav ul {
       
 	nav ul li a {  
 		display: block;  
-		marign-right: 40px;
 		width: 65px;
 		font-size: 14px;
 		line-height: 44px;
@@ -56,25 +55,23 @@ nav ul {
 }
 	nav {
 		display: table-cell;
-		background: #FFFAFA;	
+		background: #FFFFFF;	
+		width: 235px;
 	}
 	#mainContent	{
 		display: table-cell;
 		width: 605px;
-		padding-left: 22px;
 		background: #fff;	
 	}
 	
 	aside {
 		display: table-cell;
 		width: 235px;
-		background: #FFFAFA;
-		padding-left: 22px;	
+		background: #FFFFFF;
 	}
 
 aside section ul {
 	list-style: none outside none;
-	margin: 0 22px 0 22px;
 }
 
 aside section ul li a {
@@ -90,7 +87,6 @@ aside section ul li a:hover {
 
 #mainContent section ul {
 	list-style: none outside none;
-	margin: 0 0 0 0;
 }
 
 #mainContent  section ul li a {
@@ -136,7 +132,7 @@ aside section ul li a:hover {
 	#clientCourseList {
 		display: table-cell;
 		width: 285px;
-		padding-bottom: 50px;
+		padding-bottom: 22px;
 	}
 
 	#clientGuideList {
@@ -148,7 +144,6 @@ aside section ul li a:hover {
 
 #clientCourseList h3, #clientGuideList h3 {
 	display: block;
-	margin: 0 0 0 22px;
 }
 .field_with_errors {
   margin-top: 10px;

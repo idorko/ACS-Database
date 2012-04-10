@@ -10,7 +10,7 @@
     <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
 		<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
-		<%= javascript_include_tag :defaults %>
+		<%= javascript_include_tag :application %>
 </head>
  
 <body>
@@ -20,12 +20,19 @@
 	<div id="content">
 		<nav>
 		  <ul>		
+				<% if user_signed_in? %>
 					<li><%= link_to "Home", root_path %></li>
 		      <li><%= link_to "Clients", clients_path %></li>
 		      <li><%= link_to "Guides", guides_path %></li>	
 					<li><%= link_to "Courses", courses_path %></li>
-					<li><%= link_to "Cliffs", cliffs_path %></li>
-		  </ul>
+					<li><%= link_to "Cliffs", cliffs_path %></li>				
+					<li><%= link_to('Settings', edit_user_registration_path) %></li>
+					<li><%= link_to('Logout', destroy_user_session_path, :method=>:delete) %></li>
+
+				<% else %>
+					<li><%= link_to('Login', new_user_session_path)  %></li>
+				<% end %>		 
+		 </ul>
 		</nav>
 		<div id="mainContent">
 			<section>
@@ -36,8 +43,9 @@
 		 	</section>
 		</div>
 		<aside>
-
-			<%= render :partial => 'cliffs/list_date' %>
+			<% if user_signed_in? %>
+				<%= render :partial => 'cliffs/list_date' %>
+			<% end %>	
 		</aside>
 	</div>
 	<footer>
