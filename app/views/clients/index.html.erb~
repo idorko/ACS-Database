@@ -1,5 +1,6 @@
 <h1>Clients</h1>
 <%= button_to("New Client", {:controller => :clients, :action => :new},{:method => :get}) %>
+<br />
 <%= form_tag url_for(:controller => :clients, :action => :index), :method => 'get'  do %>
 	<b>Find Client by Last Name:</b><br /><%= text_field_tag :search, params[:search], :id => :search_field %>
 	<%= submit_tag "Find Client", :name => nil %>

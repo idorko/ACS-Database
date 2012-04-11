@@ -27,6 +27,9 @@ end
 
 gem 'jquery-rails'
 gem "devise", ">=2.0.4"
+gem 'will_paginate', '>=3.0.pre2'
+gem 'faker', '>=0.3.1', :group => :development
+gem 'random_data', :group => :development
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

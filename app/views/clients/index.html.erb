@@ -6,6 +6,7 @@
 	<%= submit_tag "Find Client", :name => nil %>
 <% end %>
 <ul class="clients">
+	<%= will_paginate %>
 	<% @clients.each do |client| %>
 		<li>
 			<%= link_to client.first_name+" "+client.last_name, client %>

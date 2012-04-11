@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+	require 'ext/array'
+	require 'will_paginate/array'  
+
+	protect_from_forgery
 
 	def today
 		Time.now.strftime("%Y-%m-%d")

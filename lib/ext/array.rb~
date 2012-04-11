@@ -1,0 +1,7 @@
+class Array
+
+	def sort_by_name
+		self.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+	end
+
+end

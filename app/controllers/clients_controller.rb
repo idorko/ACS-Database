@@ -4,18 +4,19 @@ class ClientsController < ApplicationController
 
 	def index
 		@title = "All Clients"
-		@clients = Client.search(params[:search])
+		@clients = Client.search(params[:search]).sort_by_name.paginate(:page => params[:page], :order => 'last_name ASC', :per_page => 10)
 
 	end
 
 	def show
 		@guides = []
 		@client = Client.find(params[:id])
-		@courses = @client.courses.all
+		@courses = @client.courses.all.paginate(:page => params[:page], :order => 'date ASC', :per_page => 10)
 	 	@courses.each do |course|
 			course.guides.each do |guide|
 				@guides << guide
 			end
+			@guides = @guides.paginate(:page => params[:guides_page], :per_page => 10)
 		end
 	end
 	
