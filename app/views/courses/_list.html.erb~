@@ -1,3 +1,4 @@
+<%= will_paginate @courses, :param_name => 'page' %>	
 <ul>
 	<% @courses.each do |course| %>
 		<li>

@@ -21,13 +21,11 @@
 <div id="clientLists">		
 	<div id="clientCourseList">
 		<h3><%= "Courses:" %></h3>
-	<%= will_paginate @courses, :param_name => 'page' %>	
 		<%= render :partial => 'courses/list' %>
 	</div>
 		
 	<div id="clientGuideList">	
 		<h3> <%= "Guides:" %></h3>
-		<%= will_paginate @guides, :param_name => 'guides_page' %>	
 		<%= render :partial => 'guides/list' %>
 	</div>
 </div>

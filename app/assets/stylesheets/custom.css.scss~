@@ -6,7 +6,7 @@ body {
 	margin: 0 auto;
 	width: 940px;
 	font: 13px/22px Helvetica, Arial, sans-serif;
-	background: #00FA9A;
+	background: #FFFFFF;
 	text-align: center;
 }
 
@@ -106,6 +106,7 @@ aside section ul li a:hover {
 
 	#day {
 		display: table;
+		border-style: solid;
 	}	
 	
 	#halfDay {	

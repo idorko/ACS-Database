@@ -1,7 +1,8 @@
+<%= will_paginate @guides, :param_name => 'guide_page' %>	
 <ul class="guides">
 	<% @guides.each do |guide| %>
 		<li>
-			<%= link_to guide.first_name+" "+guide.last_name, guide %>
+			<%= link_to guide.name, guide %>
 		</li>
 	<% end %>
 </ul>

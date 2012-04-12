@@ -4,12 +4,12 @@ class GuidesController < ApplicationController
 
 	def index
 		@title = "All Guides"
-		@guides = Guide.all
+		@guides = Guide.all.paginate(:page => params[:guide_page], :order => 'name ASC', :per_page => 10)
 	end
 
 	def show
 		@guide = Guide.find(params[:id])
-		@courses = @guide.courses
+		@courses = @guide.courses.paginate(:page => params[:guide_page], :order => 'date ASC', :per_page => 10)
 	end
 	
 	def new

@@ -6,11 +6,8 @@
 <b> Phone: </b> <%= @guide.phonenum %><br />
 <b> Certifications: </b> <%= @guide.certifications %><br />
 <%= button_to "Edit Guide", edit_guide_path(@guide), :method => 'get' %> 
-<table>
-<tr>
-	<td>
+<br />
 		<h3><%= "Courses:" %></h3>
 		<%= render :partial => 'courses/list' %>
-	</td>
-</table>
+
 

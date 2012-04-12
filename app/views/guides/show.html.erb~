@@ -1,15 +1,13 @@
 <h1> Guide Viewer </h1>
 <h3> Guide: <%= @guide.name %> </h3>
-<%= button_to "Edit Guide", edit_guide_path(@guide), :method => 'get' %> 
+
 <b> Email: </b> <%= @guide.email %><br />
 <b> Age: </b> <%= @guide.age %><br />
 <b> Phone: </b> <%= @guide.phonenum %><br />
 <b> Certifications: </b> <%= @guide.certifications %><br />
-<table>
-<tr>
-	<td>
+<%= button_to "Edit Guide", edit_guide_path(@guide), :method => 'get' %> 
+
 		<h3><%= "Courses:" %></h3>
 		<%= render :partial => 'courses/list' %>
-	</td>
-</table>
+
 

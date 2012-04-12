@@ -9,7 +9,7 @@ class CliffsController < ApplicationController
 		
 	def show
 		@cliff = Cliff.find(params[:id])
-		@courses = @cliff.courses
+		@courses = @cliff.courses.paginate(:page => params[:page], :order => 'date ASC', :per_page => 15)
 	end
 
 	def new

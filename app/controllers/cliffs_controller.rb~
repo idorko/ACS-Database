@@ -1,5 +1,7 @@
 class CliffsController < ApplicationController
-		
+
+	before_filter :authenticate_user!
+	
 	def index
 		@title = "All Cliffs"
 		@cliffs = Cliff.all
@@ -7,7 +9,7 @@ class CliffsController < ApplicationController
 		
 	def show
 		@cliff = Cliff.find(params[:id])
-		@courses = @cliff.courses
+		@courses = @cliff.courses.paginate(:page => params[:page], :order => 'date ASC', :per_page => 15)
 	end
 
 	def new

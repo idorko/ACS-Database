@@ -1,7 +1,8 @@
-<ul class="clients">
-	<% @clients.each do |client| %>
+<%= will_paginate @guides, :param_name => 'guide_page' %>	
+<ul class="guides">
+	<% @guides.each do |guide| %>
 		<li>
-			<%= link_to client.first_name+" "+client.last_name, client %>
+			<%= link_to guide.name %>
 		</li>
 	<% end %>
 </ul>

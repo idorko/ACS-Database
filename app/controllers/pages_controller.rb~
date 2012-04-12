@@ -39,6 +39,7 @@ class PagesController < ApplicationController
 				end	
 				@courses = []
 			end
+			@week = @week.paginate(:page => params[:page], :per_page => 1)
 		end	
 	end
 end

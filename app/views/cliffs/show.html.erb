@@ -2,9 +2,8 @@
 <h3> Cliff Name: <%= @cliff.name %></h3>
 <%= button_to "Edit #{@cliff.name}", edit_cliff_path(@cliff), :method => 'get' %>
 <br />
-	<div id="clientCourseList">
 		<h3><%= "Courses:" %></h3>
 		<%= render :partial => 'courses/list' %>
-	</div>
+
 
 

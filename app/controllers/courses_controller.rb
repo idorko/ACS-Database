@@ -15,8 +15,8 @@ class CoursesController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
-		@guides = @course.guides.all
-		@clients = @course.clients.all
+		@guides = @course.guides.all.paginate(:page => params[:guide_page], :order => 'name ASC', :per_page => 10)
+		@clients = @course.clients.all.paginate(:page => params[:client_page], :order => 'name ASC', :per_page => 10)
 		if !@course.cliff.nil?
 			@cliff = @course.cliff
 		else
