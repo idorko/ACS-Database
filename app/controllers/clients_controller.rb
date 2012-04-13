@@ -9,11 +9,11 @@ class ClientsController < ApplicationController
 				@clients.each do |client|
 					@emails.write("#{client.email}\n")
 				end
-
+			end	
 				@emails.close
 		
 				send_file 'tmp/email_list.txt', :x_sendfile => true
-			end	
+	
 	end
 
 	def index
