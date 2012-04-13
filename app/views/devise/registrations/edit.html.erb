@@ -17,5 +17,7 @@
 
   <div><%= f.submit "Update" %></div>
 <% end %>
-
+<br />
+<%= button_to "Download Email List", {:controller => :clients, :action => :download}, {:method => :get} %>
+<br />
 <%= link_to "Back", :back %>

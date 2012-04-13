@@ -22,6 +22,6 @@ AcsDatabase::Application.routes.draw do
 
 	match '/clients', :to => 'clients#index'
 	match '/courses', :to => 'courses#index'	
-
+	match '/download', :to => 'clients#download'
 
 end

@@ -2,6 +2,18 @@ class ClientsController < ApplicationController
 	
 	before_filter :authenticate_user!
 
+	def download
+			@emails = File.open("tmp/email_list.txt", "w")
+			@clients = Client.all
+			@clients.each do |client|
+				@emails.write("#{client.email}\n")
+			end
+
+			@emails.close
+
+			send_file 'tmp/email_list.txt', :x_sendfile => true
+	end
+
 	def index
 		@title = "All Clients"
 		@clients = Client.search(params[:search]).sort_by_name.paginate(:page => params[:page], :order => 'last_name ASC', :per_page => 10)
