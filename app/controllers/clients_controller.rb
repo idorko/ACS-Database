@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def download
-			@emails = File.new("tmp/email_list.txt", "w")
+			@emails = File.new("email_list.txt", "w")
 			@clients = Client.all
 			if @clients
 				@clients.each do |client|
