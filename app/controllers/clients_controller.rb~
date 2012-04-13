@@ -12,8 +12,7 @@ class ClientsController < ApplicationController
 			end	
 				@emails.close
 		
-				send_file 'tmp/email_list.txt', :x_sendfile => true
-			redirect_to 'users/show'
+				send_file @emails, :x_sendfile => true
 	end
 
 	def index

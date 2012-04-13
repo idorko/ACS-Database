@@ -10,9 +10,10 @@ class ClientsController < ApplicationController
 					@emails.write("#{client.email}\n")
 				end
 			end	
-				@emails.close
+			
 		
-				send_file 'tmp/email_list.txt', :x_sendfile => true
+				send_file @emails, :x_sendfile => true
+			@emails.close
 	end
 
 	def index
