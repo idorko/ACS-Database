@@ -5,13 +5,15 @@ class ClientsController < ApplicationController
 	def download
 			@emails = File.open("tmp/email_list.txt", "w")
 			@clients = Client.all
-			@clients.each do |client|
-				@emails.write("#{client.email}\n")
-			end
+			if @clients
+				@clients.each do |client|
+					@emails.write("#{client.email}\n")
+				end
 
-			@emails.close
-
-			send_file 'tmp/email_list.txt', :x_sendfile => true
+				@emails.close
+		
+				send_file 'tmp/email_list.txt', :x_sendfile => true
+			end	
 	end
 
 	def index
