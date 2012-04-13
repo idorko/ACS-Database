@@ -13,7 +13,6 @@ class ClientsController < ApplicationController
 				@emails.close
 		
 				send_file 'tmp/email_list.txt', :x_sendfile => true
-	
 	end
 
 	def index
