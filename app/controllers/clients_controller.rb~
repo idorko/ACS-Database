@@ -3,16 +3,17 @@ class ClientsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def download
-			@emails = File.open("tmp/email_list.txt", "w")
+			@emails = File.new("email_list.txt", "w")
 			@clients = Client.all
 			if @clients
 				@clients.each do |client|
 					@emails.write("#{client.email}\n")
 				end
 			end	
-				@emails.close
+			
 		
 				send_file @emails, :x_sendfile => true
+			@emails.close
 	end
 
 	def index
